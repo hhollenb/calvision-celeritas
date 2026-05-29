@@ -1,0 +1,34 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {"major": 3, "minor": 23, "patch": 0},
+  "configurePresets": [
+    {
+        "name": ".base",
+        "hidden": true,
+        "binaryDir": "${sourceDir}/build-${presetName}",
+        "generator": "Ninja",
+        "cacheVariables": {
+            "CMAKE_CXX_STANDARD": "20",
+            "CMAKE_CXX_EXTENSIONS": {"type": "BOOL", "value": "OFF"},
+            "CMAKE_CXX_FLAGS": "-Wno-error=deprecated-declarations"
+        }
+    },
+    {
+        "name": "waterskin",
+        "inherits": [".base"],
+        "cacheVariables": {
+            "CMAKE_PREFIX_PATH": "/home/antihydra/research/celeritas/spack_install/local_install/",
+            "CMAKE_CXX_COMPILER_LAUNCHER": {"type": "STRING", "value": "$env{CCACHE_PROGRAM}"},
+            "CMAKE_C_COMPILER_LAUNCHER": {"type": "STRING", "value": "$env{CCACHE_PROGRAM}"}
+        }
+    },
+    {
+        "name": "rivanna",
+        "inherits": [".base"],
+        "cacheVariables": {
+            "CMAKE_PREFIX_PATH": "../celeritas/install-rivanna-debug",
+            "CMAKE_CXX_FLAGS": "-march=x86-64-v3"
+        }
+    }
+  ]
+}

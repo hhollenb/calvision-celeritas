@@ -1,0 +1,6 @@
+build*
+*.root
+*.pdf
+*.png
+.tex
+slurm-*.out
