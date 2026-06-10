@@ -76,9 +76,15 @@ void CelerRunner::operator()()
 
 void CelerRunner::run_event(unsigned int event)
 {
+    std::cout << "\tStarting hit recorder for event " << event << "\n";
     hit_recorder_->start_event(event);
+    std::cout << "\tLoading edeps...\n";
     auto const hits = (*edep_reader_)("edep_" + std::to_string(event) + ".root");
+    std::cout << "\tLoaded " << hits.size() << " edeps\n";
     runner_->insert(celeritas::make_span(std::as_const(hits)));
+    std::cout << "\tRunning...\n";
     (*runner_)();
+    std::cout << "\tEnding event...\n";
     hit_recorder_->end_event();
+    std::cout << "\tDone.\n";
 }

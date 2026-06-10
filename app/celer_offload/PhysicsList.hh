@@ -1,20 +1,21 @@
 #pragma once
 
-#include <unordered_set>
+#include <vector>
 #include <string>
 
 #include <FTFP_BERT.hh>
 
+#include "GeneratorOffload.hh"
 #include "celeritas/g4/SupportedOpticalPhysics.hh"
 
 class PhysicsList : public FTFP_BERT
 {
   public:
-    PhysicsList(std::unordered_set<std::string> const& allowed_vols);
+    PhysicsList(std::vector<std::string> const& allowed_vols);
 
     celeritas::GeantOpticalPhysicsOptions optical_options() const;
     celeritas::GeantPhysicsOptions physics_options() const;
 
   private:
-    std::unordered_set<std::string> allowed_vols_;
+     BaseGeneratorOffload::Options gen_opts_;
 };

@@ -5,50 +5,6 @@
 #include <G4Scintillation.hh>
 #include <G4Cerenkov.hh>
 
-/*
-OpticalSensitiveDetector::OpticalSensitiveDetector(std::string const& name)
-    : G4VSensitiveDetector(name)
-{
-    collectionName.insert("OpticalHitsCollection");
-}
-
-void OpticalSensitiveDetector::Initialize(G4HCofThisEvent* HCE)
-{
-    if (hc_id_ < 0)
-    {
-        hc_id_ = this->GetCollectionID(0);
-    }
-
-    hc_ = new OpticalHitsCollection(this->GetName(), "OpticalHitsCollection");
-    HCE->AddHitsCollection(hc_id_, hc_);
-}
-
-void OpticalSensitiveDetector::EndOfEvent(G4HCofThisEvent*)
-{
-}
-
-bool OpticalSensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*)
-{
-    if (step->GetTrack()->GetParticleDefinition() == G4OpticalPhoton::OpticalPhotonDefinition())
-    {
-        auto const* proc = step->GetTrack()->GetCreatorProcess();
-        if (dynamic_cast<G4Scintillation const*>(proc))
-        {
-            ++hc_->scores().num_scintillation;
-        }
-        else if (dynamic_cast<G4Cerenkov const*>(proc))
-        {
-            ++hc_->scores().num_cherenkov;
-        }
-
-        step->GetTrack()->SetTrackStatus(fKillTrackAndSecondaries);
-    }
-    return false;
-
-}
-*/
-
-
 celeritas::GeneratorType get_gen_type(G4Step const* step)
 {
     auto const* proc = step->GetTrack()->GetCreatorProcess();
@@ -65,21 +21,90 @@ celeritas::GeneratorType get_gen_type(G4Step const* step)
 }
 
 
-SignalSensitiveDetector::SignalSensitiveDetector(std::string const& name)
-    : G4VSensitiveDetector(name)
+
+OpticalHitRecorder::OpticalHitRecorder()
+{}
+
+void OpticalHitRecorder::register_detector(std::string const& sd_name)
 {
-    collectionName.insert("SignalHitsCollection");
+    g4_sd_mapping_.emplace(sd_name, g4_sd_mapping_.size());
+    g4_signal_hc_.push_back(nullptr);
+    celer_signal_hc_.push_back(nullptr);
+
+    G4cout << "Registered detector " << sd_name << " with detector ID " << g4_sd_mapping_.at(sd_name) << G4endl;
+}
+
+void OpticalHitRecorder::initialize(std::string const& sd_name, SignalHitsCollection* celer_signal_hc, SignalHitsCollection* g4_signal_hc)
+{
+    unsigned int det_id = g4_sd_mapping_.at(sd_name);
+    celer_signal_hc_[det_id] = celer_signal_hc;
+    g4_signal_hc_[det_id] = g4_signal_hc;
+}
+
+void OpticalHitRecorder::operator()(std::string const& sd_name, G4Step* step)
+{
+    if (step->GetTrack()->GetParticleDefinition() == G4OpticalPhoton::OpticalPhotonDefinition())
+    {
+        if (auto* g4_signal_hc = g4_signal_hc_[g4_sd_mapping_.at(sd_name)])
+        {
+           auto const* ps = step->GetPreStepPoint();
+
+            OpticalHit hit;
+            hit.energy = ps->GetKineticEnergy() / CLHEP::eV;
+            hit.time = ps->GetGlobalTime() / CLHEP::ns;
+            hit.gen_type = get_gen_type(step);
+
+            g4_signal_hc->score(hit);
+        }
+
+        step->GetTrack()->SetTrackStatus(fKillTrackAndSecondaries);
+    }
+}
+
+void OpticalHitRecorder::operator()(CeleritasSpanHits hits)
+{
+    for (auto const& hit : hits)
+    {
+        OpticalHit h;
+        h.energy = celeritas::value_as<celeritas::units::MevEnergy>(hit.energy) * 1e6;
+        h.time = hit.time / celeritas::units::nanosecond.value();
+        h.gen_type = hit.gen_type;
+
+        celer_signal_hc_[hit.detector.get()]->score(h);
+    }
+}
+
+
+
+
+SignalSensitiveDetector::SignalSensitiveDetector(std::string const& name, OpticalHitRecorder* hit_recorder)
+    : G4VSensitiveDetector(name)
+    , hit_recorder_(hit_recorder)
+{
+    collectionName.insert("CeleritasSignalHitsCollection");
+    collectionName.insert("Geant4SignalHitsCollection");
+
+    hit_recorder_->register_detector(name);
 }
 
 void SignalSensitiveDetector::Initialize(G4HCofThisEvent* HCE)
 {
-    if (signal_hc_id_ < 0)
+    if (celer_signal_hc_id_ < 0)
     {
-        signal_hc_id_ = this->GetCollectionID(0);
+        celer_signal_hc_id_ = this->GetCollectionID(0);
     }
 
-    signal_hc_ = new SignalHitsCollection(this->GetName(), "SignalHitsCollection");
-    HCE->AddHitsCollection(signal_hc_id_, signal_hc_);
+    if (g4_signal_hc_id_ < 0)
+    {
+        g4_signal_hc_id_ = this->GetCollectionID(1);
+    }
+
+    celer_signal_hc_ = new SignalHitsCollection(this->GetName(), collectionName[0]);
+    g4_signal_hc_ = new SignalHitsCollection(this->GetName(), collectionName[1]);
+    HCE->AddHitsCollection(celer_signal_hc_id_, celer_signal_hc_);
+    HCE->AddHitsCollection(g4_signal_hc_id_, g4_signal_hc_);
+
+    hit_recorder_->initialize(this->GetName(), celer_signal_hc_, g4_signal_hc_);
 }
 
 void SignalSensitiveDetector::EndOfEvent(G4HCofThisEvent*)
@@ -88,18 +113,6 @@ void SignalSensitiveDetector::EndOfEvent(G4HCofThisEvent*)
 
 bool SignalSensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*)
 {
-    if (step->GetTrack()->GetParticleDefinition() == G4OpticalPhoton::OpticalPhotonDefinition())
-    {
-        auto const* ps = step->GetPreStepPoint();
-
-        OpticalHit hit;
-        hit.energy = ps->GetKineticEnergy() / CLHEP::eV;
-        hit.time = ps->GetGlobalTime() / CLHEP::ns;
-        hit.gen_type = get_gen_type(step);
-
-        signal_hc_->score(hit);
-
-        step->GetTrack()->SetTrackStatus(fKillTrackAndSecondaries);
-    }
+    (*hit_recorder_)(this->GetName(), step);
     return false;
 }

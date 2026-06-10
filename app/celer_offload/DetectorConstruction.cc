@@ -4,8 +4,9 @@
 
 #include "OpticalSensitiveDetector.hh"
 
-DetectorConstruction::DetectorConstruction(inp::Config const& config)
+DetectorConstruction::DetectorConstruction(inp::Config const& config, OpticalHitRecorder* hit_recorder)
     : config_(config)
+    , hit_recorder_(hit_recorder)
 {
     gdml_parser_.SetStripFlag(true);
     gdml_parser_.Read(config_.detector.geometry_filename, false);
@@ -35,7 +36,7 @@ void DetectorConstruction::ConstructSDandField()
 
             // Add sensitive detector
             std::string sd_name = log_vol->GetName();
-            G4VSensitiveDetector* this_sd = new SignalSensitiveDetector(sd_name);
+            G4VSensitiveDetector* this_sd = new SignalSensitiveDetector(sd_name, hit_recorder_);
             sd_manager->AddNewDetector(this_sd);
             G4VUserDetectorConstruction::SetSensitiveDetector(log_vol->GetName(), this_sd);
 

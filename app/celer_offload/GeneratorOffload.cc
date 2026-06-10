@@ -6,6 +6,9 @@
 #include "celeritas/optical/gen/GeneratorData.hh"
 #include "celeritas/ext/GeantStepView.hh"
 #include "celeritas/ext/GeantTrackView.hh"
+#include "accel/LocalOpticalGenOffload.hh"
+#include "accel/detail/IntegrationSingleton.hh"
+
 
 std::string to_string(celeritas::GeneratorType t)
 {
@@ -22,7 +25,6 @@ std::string to_string(celeritas::GeneratorType t)
 
 BaseGeneratorOffload::BaseGeneratorOffload(celeritas::GeneratorType gen_type, Options opts)
     : allowed_names_(opts.allowed_names)
-    , edep_writer_(opts.edep_writer)
     , track_photons_(opts.track_photons)
     , gen_type_(gen_type)
 {}
@@ -87,7 +89,18 @@ void BaseGeneratorOffload::offload(G4Track const& track, G4Step const& step, uns
             return;
         }
 
-        (*edep_writer_)(data);
+        // Push generator distribution for this step to offload
+        auto& local = celeritas::detail::IntegrationSingleton::instance().local_offload();
+        auto* gen_offload = dynamic_cast<celeritas::LocalOpticalGenOffload*>(&local);
+
+        CELER_VALIDATE(gen_offload,
+                       << "LocalOpticalGenOffload required for "
+                          "CherenkovOffload");
+
+        CELER_LOG_LOCAL(debug)
+            << "Offloading " << data.num_photons << " Cherenkov photons";
+
+        gen_offload->Push(data);
     }
 }
 

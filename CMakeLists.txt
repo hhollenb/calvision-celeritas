@@ -44,9 +44,9 @@ set(_libs
     Celeritas::accel
 )
 
-add_executable(dual-readout src/main.cc ${_src})
-target_include_directories(dual-readout PRIVATE ${_includes})
-cuda_rdc_target_link_libraries(dual-readout ${_libs})
+# add_executable(dual-readout src/main.cc ${_src})
+# target_include_directories(dual-readout PRIVATE ${_includes})
+# cuda_rdc_target_link_libraries(dual-readout ${_libs})
 
 # configure_file(${PROJECT_SOURCE_DIR}/benchmark_analysis.C ${PROJECT_BINARY_DIR} COPYONLY)
 
@@ -60,6 +60,8 @@ set(_src_app
     app/celer_offload/Runner.cc
     app/celer_offload/SignalRunAction.cc
     app/celer_offload/RootSignalWriter.cc
+    app/celer_offload/EventAction.cc
+    app/celer_offload/GeneratorOffload.cc
 )
 
 add_executable(g4_mt_app app/celer_offload/main.cc ${_src_app})

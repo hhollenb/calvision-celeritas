@@ -26,7 +26,10 @@ int main(int argc, char** argv)
 
     if (runner_name == "geant4")
     {
-        GeantRunner runner;
+        GeantRunner::Options opts;
+        opts.track_photons = false;
+
+        GeantRunner runner{opts};
 
         runner();
     }

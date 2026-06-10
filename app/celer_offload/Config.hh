@@ -23,7 +23,7 @@ struct Detector
 {
     std::string geometry_filename;
     std::map<std::string, std::string> detectors;
-    std::unordered_set<std::string> allowed_volumes;
+    std::vector<std::string> allowed_volumes;
 };
 
 struct Output
@@ -35,6 +35,7 @@ struct Output
 struct Config
 {
     unsigned int num_events;
+    unsigned int num_threads{1};
     Primary primary;
     Detector detector;
     Output output;

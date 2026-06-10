@@ -9,7 +9,7 @@
 #include "PhysicsList.hh"
 #include "ActionInitialization.hh"
 
-GeantRunner::GeantRunner()
+GeantRunner::GeantRunner(Options const& opts)
     : edep_writer_(std::make_unique<EnergyDepositWriter>())
 
 {
@@ -19,7 +19,7 @@ GeantRunner::GeantRunner()
     run_manager_ = std::unique_ptr<G4RunManager>{G4RunManagerFactory::CreateRunManager(G4RunManagerType::Serial)};
 
     run_manager_->SetUserInitialization(new DetectorConstruction("dual_readout.gdml", hit_recorder_.get(), detector_mapping_.get()));
-    run_manager_->SetUserInitialization(new PhysicsList(edep_writer_.get()));
+    run_manager_->SetUserInitialization(new PhysicsList(edep_writer_.get(), opts.track_photons));
     run_manager_->SetUserInitialization(new ActionInitialization(edep_writer_.get(),
                                                                  hit_recorder_.get()));
 
@@ -41,5 +41,5 @@ GeantRunner::GeantRunner()
 
 void GeantRunner::operator()()
 {
-    run_manager_->BeamOn(1);
+    run_manager_->BeamOn(20);
 }

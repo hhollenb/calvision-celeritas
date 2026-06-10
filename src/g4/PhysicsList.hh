@@ -12,7 +12,7 @@
 class PhysicsList : public FTFP_BERT
 {
   public:
-    PhysicsList(EnergyDepositWriter* edep_writer);
+    PhysicsList(EnergyDepositWriter* edep_writer, bool track_photons);
 
     celeritas::GeantOpticalPhysicsOptions optical_options() const;
     celeritas::GeantPhysicsOptions physics_options() const;

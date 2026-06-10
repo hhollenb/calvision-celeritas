@@ -12,7 +12,13 @@
 class GeantRunner
 {
   public:
-    GeantRunner();
+    struct Options
+    {
+        bool track_photons;
+    };
+
+  public:
+    GeantRunner(Options const& opts);
 
     void operator()();
 

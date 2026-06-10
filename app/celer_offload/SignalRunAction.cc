@@ -2,6 +2,7 @@
 
 #include <G4HCofThisEvent.hh>
 #include <G4Event.hh>
+#include <CeleritasG4.hh>
 
 SignalRun::SignalRun()
     : G4Run()
@@ -17,7 +18,7 @@ void SignalRun::RecordEvent(G4Event const* event)
     for (int i = 0; i < HCE->GetNumberOfCollections(); i++)
     {
         auto const* hc = (SignalHitsCollection*) HCE->GetHC(i);
-        result.emplace(hc->GetSDname(), hc->hists());
+        result.emplace(hc->id_name(), hc->hists());
     }
 
     event_hists_.emplace(event_num, std::move(result));
@@ -42,12 +43,7 @@ auto SignalRun::event_hists() const -> std::map<unsigned int, EventHistograms> c
 SignalRunAction::SignalRunAction(inp::Config const& config, PrimaryGeneratorAction* primary_action)
     : config_(config)
     , primary_action_(primary_action)
-{
-    if (!primary_action_)
-    {
-        root_writer_ = std::make_unique<RootSignalWriter>(config_.output.output_filename);
-    }
-}
+{}
 
 G4Run* SignalRunAction::GenerateRun()
 {
@@ -60,12 +56,21 @@ void SignalRunAction::BeginOfRunAction(G4Run const* run)
     {
         primary_action_->set_energy(config_.primary.energies[run->GetRunID()]);
     }
+
+    celeritas::UserActionIntegration::Instance().BeginOfRunAction(run);
 }
 
 void SignalRunAction::EndOfRunAction(G4Run const* run)
 {
+    celeritas::UserActionIntegration::Instance().EndOfRunAction(run);
+
     if (this->IsMaster())
     {
+        if (!root_writer_)
+        {
+            root_writer_ = std::make_unique<RootSignalWriter>(config_.output.output_filename);
+        }
+
         SignalRun const* sig_run = (SignalRun const*) run;
         
         auto run_writer = root_writer_->next_run(config_.primary.energies[run->GetRunID()]);

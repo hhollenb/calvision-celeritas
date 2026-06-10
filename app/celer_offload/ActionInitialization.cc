@@ -3,6 +3,7 @@
 // #include "TROOT.h"
 #include "TH1.h"
 
+#include "EventAction.hh"
 #include "SignalRunAction.hh"
 #include "PrimaryGeneratorAction.hh"
 
@@ -28,4 +29,5 @@ void ActionInitialization::Build() const
     PrimaryGeneratorAction* primary_action = new PrimaryGeneratorAction(config_.primary);
     this->SetUserAction(new SignalRunAction(config_, primary_action));
     this->SetUserAction(primary_action);
+    this->SetUserAction(new EventAction());
 }

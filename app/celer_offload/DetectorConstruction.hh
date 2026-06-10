@@ -7,11 +7,12 @@
 #include <G4VPhysicalVolume.hh>
 
 #include "Config.hh"
+#include "OpticalSensitiveDetector.hh"
 
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
   public:
-    DetectorConstruction(inp::Config const& config);
+    DetectorConstruction(inp::Config const& config, OpticalHitRecorder* hit_recorder);
 
     G4VPhysicalVolume* Construct() override;
     void ConstructSDandField() override;
@@ -21,4 +22,5 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     G4GDMLParser gdml_parser_;
 
     inp::Config config_;
+    OpticalHitRecorder* hit_recorder_;
 };

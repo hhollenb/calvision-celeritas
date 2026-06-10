@@ -84,7 +84,8 @@ void SignalHistograms::fill(OpticalHit const& hit)
 
 SignalHitsCollection::SignalHitsCollection(std::string const& det_name, std::string const& collection_name)
     : G4VHitsCollection(det_name, collection_name)
-    , hists_(det_name)
+    , hists_(det_name + collection_name)
+    , id_name_(det_name + collection_name)
 {
 }
 
@@ -96,4 +97,9 @@ void SignalHitsCollection::score(OpticalHit const& hit)
 SignalHistograms const& SignalHitsCollection::hists() const 
 {
     return hists_;
+}
+
+std::string const& SignalHitsCollection::id_name() const
+{
+    return id_name_;
 }

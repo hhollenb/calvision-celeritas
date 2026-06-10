@@ -48,8 +48,11 @@ class SignalHitsCollection : public G4VHitsCollection
 
     SignalHistograms const& hists() const;
 
+    std::string const& id_name() const;
+
   private:
     SignalHistograms hists_;
+    std::string id_name_;
 };
 
 using EventHistograms = std::map<std::string, SignalHistograms>;
