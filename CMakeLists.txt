@@ -49,3 +49,19 @@ target_include_directories(dual-readout PRIVATE ${_includes})
 cuda_rdc_target_link_libraries(dual-readout ${_libs})
 
 # configure_file(${PROJECT_SOURCE_DIR}/benchmark_analysis.C ${PROJECT_BINARY_DIR} COPYONLY)
+
+set(_src_app
+    app/celer_offload/ActionInitialization.cc
+    app/celer_offload/DetectorConstruction.cc
+    app/celer_offload/OpticalHit.cc
+    app/celer_offload/OpticalSensitiveDetector.cc
+    app/celer_offload/PhysicsList.cc
+    app/celer_offload/PrimaryGeneratorAction.cc
+    app/celer_offload/Runner.cc
+    app/celer_offload/SignalRunAction.cc
+    app/celer_offload/RootSignalWriter.cc
+)
+
+add_executable(g4_mt_app app/celer_offload/main.cc ${_src_app})
+target_include_directories(g4_mt_app PRIVATE ${_includes})
+cuda_rdc_target_link_libraries(g4_mt_app ${_libs})
