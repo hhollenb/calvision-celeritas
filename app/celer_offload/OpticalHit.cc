@@ -23,20 +23,20 @@ std::string to_title(celeritas::GeneratorType gen_type)
 }
 
 
-ProcessHistograms::ProcessHistograms(celeritas::GeneratorType gen_type, std::string const& det_name)
+ProcessHistograms::ProcessHistograms(celeritas::GeneratorType gen_type, std::string const& det_name, std::string const& collection_name)
 {
-    energy = new TH1D((det_name + "_" + to_name(gen_type) + "_energy").c_str(),
-                      (det_name + " " + to_title(gen_type) + " Energy;Energy [eV];Num Photons").c_str(),
+    energy = new TH1D((det_name + "_" + collection_name + "_" + to_name(gen_type) + "_energy").c_str(),
+                      (det_name + " " + collection_name + " " + to_title(gen_type) + " Energy;Energy [eV];Num Photons").c_str(),
                       100, 1.0, 6.0);
     energy->SetDirectory(nullptr);
 
-    time = new TH1D((det_name + "_" + to_name(gen_type) + "_time").c_str(),
-                    (det_name + " " + to_title(gen_type) + " Time;Time [ns];Num Photons").c_str(),
+    time = new TH1D((det_name + "_" + collection_name + "_" + to_name(gen_type) + "_time").c_str(),
+                    (det_name + " " + collection_name + " " + to_title(gen_type) + " Time;Time [ns];Num Photons").c_str(),
                     100, 0.0, 100.0);
     time->SetDirectory(nullptr);
 
-    signal = new TProfile((det_name + "_" + to_name(gen_type) + "_signal").c_str(),
-                          (det_name + " " + to_title(gen_type) + " Signal;Time [ns];Energy [eV]").c_str(),
+    signal = new TProfile((det_name + "_" + collection_name + "_" + to_name(gen_type) + "_signal").c_str(),
+                          (det_name + " " + collection_name + " " + to_title(gen_type) + " Signal;Time [ns];Energy [eV]").c_str(),
                           100, -10.0, 1000.0);
     signal->SetDirectory(nullptr);
 }
@@ -61,9 +61,9 @@ void ProcessHistograms::write(TDirectory* dir) const
 }
 
 
-SignalHistograms::SignalHistograms(std::string const& det_name)
-    : cherenkov(celeritas::GeneratorType::cherenkov, det_name)
-    , scintillation(celeritas::GeneratorType::scintillation, det_name)
+SignalHistograms::SignalHistograms(std::string const& det_name, std::string const& collection_name)
+    : cherenkov(celeritas::GeneratorType::cherenkov, det_name, collection_name)
+    , scintillation(celeritas::GeneratorType::scintillation, det_name, collection_name)
 {}
 
 void SignalHistograms::fill(OpticalHit const& hit)
@@ -84,8 +84,8 @@ void SignalHistograms::fill(OpticalHit const& hit)
 
 SignalHitsCollection::SignalHitsCollection(std::string const& det_name, std::string const& collection_name)
     : G4VHitsCollection(det_name, collection_name)
-    , hists_(det_name + collection_name)
-    , id_name_(det_name + collection_name)
+    , hists_(det_name, collection_name)
+    , id_name_(det_name + "_" + collection_name)
 {
 }
 

@@ -30,6 +30,7 @@ struct Output
 {
     std::string output_filename;
     bool record_geant4{false};
+    bool record_celeritas;
 };
 
 struct Config
@@ -40,5 +41,7 @@ struct Config
     Detector detector;
     Output output;
 };
+
+Config from_json_file(std::string const& filename);
 
 } // namespace inp

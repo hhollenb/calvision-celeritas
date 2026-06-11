@@ -25,7 +25,7 @@ struct ProcessHistograms
     TH1D* time;
     TProfile* signal;
 
-    ProcessHistograms(celeritas::GeneratorType gen_type, std::string const& det_name);
+    ProcessHistograms(celeritas::GeneratorType gen_type, std::string const& det_name, std::string const& collection_name);
     void fill(OpticalHit const& hit);
     void write(TDirectory* dir) const;
 };
@@ -35,7 +35,7 @@ struct SignalHistograms
     ProcessHistograms cherenkov;
     ProcessHistograms scintillation;
 
-    SignalHistograms(std::string const& det_name);
+    SignalHistograms(std::string const& det_name, std::string const& collection_name);
     void fill(OpticalHit const& hit);
 };
 

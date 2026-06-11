@@ -9,6 +9,11 @@
 
 #include "OpticalHit.hh"
 
+namespace inp
+{
+class Config;
+} // namespace inp
+
 class OpticalHitRecorder
 {
   public:
@@ -16,11 +21,11 @@ class OpticalHitRecorder
 
     OpticalHitRecorder();
 
-    void register_detector(std::string const& sd_name);
+    unsigned int register_detector(std::string const& sd_name);
 
-    void initialize(std::string const& sd_name, SignalHitsCollection* celer_signal_hc, SignalHitsCollection* g4_signal_hc);
+    void initialize(unsigned int detector_id, SignalHitsCollection* celer_signal_hc, SignalHitsCollection* g4_signal_hc);
 
-    void operator()(std::string const& sd_name, G4Step* step);
+    void operator()(unsigned int detector_id, G4Step* step);
     void operator()(CeleritasSpanHits hits);
 
   private:
@@ -32,7 +37,7 @@ class OpticalHitRecorder
 class SignalSensitiveDetector : public G4VSensitiveDetector
 {
   public:
-    SignalSensitiveDetector(std::string const& name, OpticalHitRecorder* hit_recorder);
+    SignalSensitiveDetector(std::string const& name, OpticalHitRecorder* hit_recorder, inp::Config const& config);
 
     bool ProcessHits(G4Step* step, G4TouchableHistory*) override;
 
@@ -45,5 +50,10 @@ class SignalSensitiveDetector : public G4VSensitiveDetector
     SignalHitsCollection* celer_signal_hc_;
     SignalHitsCollection* g4_signal_hc_;
 
+    unsigned int detector_id_;
+
     OpticalHitRecorder* hit_recorder_;
+
+    bool record_geant4_;
+    bool record_celeritas_;
 };

@@ -20,8 +20,13 @@ celeritas::SetupOptions celeritas_options(OpticalHitRecorder* hit_recorder)
     so.optical = [hit_recorder] {
         celeritas::OpticalSetupOptions opts;
         opts.capacity = celeritas::inp::OpticalStateCapacity::from_default(false);
+        // opts.capacity.generators *= 10;
         opts.generator = celeritas::inp::OpticalOffloadGenerator{};
         opts.detectors.callback = [hit_recorder] (celeritas::Span<celeritas::optical::DetectorHit const> hits) { (*hit_recorder)(hits); };
+
+        // Only for tests with massive photon counts
+        // opts.limits.steps = 1000;
+        // opts.limits.step_iters = 1000;
         return opts;
     }();
 
@@ -42,9 +47,10 @@ Runner::Runner(inp::Config config)
     hit_recorder_ = std::make_unique<OpticalHitRecorder>();
 
     run_manager_->SetUserInitialization(new DetectorConstruction(config_, hit_recorder_.get()));
-    run_manager_->SetUserInitialization(new PhysicsList(config_.detector.allowed_volumes));
+    run_manager_->SetUserInitialization(new PhysicsList(BaseGeneratorOffload::Options::from_config(config_)));
     run_manager_->SetUserInitialization(new ActionInitialization(config_));
 
+    // celeritas::TrackingManagerIntegration::Instance().SetOptions(celeritas_options(hit_recorder_.get()));
     celeritas::UserActionIntegration::Instance().SetOptions(celeritas_options(hit_recorder_.get()));
 
     run_manager_->Initialize();

@@ -1,15 +1,16 @@
 #include "PhysicsList.hh"
 
+#include <CeleritasG4.hh>
+
 // #include "accel/gen/CherenkovOffload.hh"
 // #include "accel/gen/ScintillationOffload.hh"
 
-PhysicsList::PhysicsList(std::vector<std::string> const& allowed_vols)
+PhysicsList::PhysicsList(BaseGeneratorOffload::Options gen_opts)
     : FTFP_BERT(0)
+    , gen_opts_(std::move(gen_opts))
 {
     this->RegisterPhysics(new celeritas::SupportedOpticalPhysics(this->physics_options()));
-
-    gen_opts_.track_photons = true;
-    gen_opts_.allowed_names = allowed_vols;
+    // this->RegisterPhysics(new celeritas::TrackingManagerConstructor{&celeritas::TrackingManagerIntegration::Instance()});
 }
 
 celeritas::GeantOpticalPhysicsOptions PhysicsList::optical_options() const

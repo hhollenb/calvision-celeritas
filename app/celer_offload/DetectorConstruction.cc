@@ -36,7 +36,7 @@ void DetectorConstruction::ConstructSDandField()
 
             // Add sensitive detector
             std::string sd_name = log_vol->GetName();
-            G4VSensitiveDetector* this_sd = new SignalSensitiveDetector(sd_name, hit_recorder_);
+            G4VSensitiveDetector* this_sd = new SignalSensitiveDetector(sd_name, hit_recorder_, config_);
             sd_manager->AddNewDetector(this_sd);
             G4VUserDetectorConstruction::SetSensitiveDetector(log_vol->GetName(), this_sd);
 

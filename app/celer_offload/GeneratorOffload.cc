@@ -9,6 +9,8 @@
 #include "accel/LocalOpticalGenOffload.hh"
 #include "accel/detail/IntegrationSingleton.hh"
 
+#include "Config.hh"
+
 
 std::string to_string(celeritas::GeneratorType t)
 {
@@ -21,11 +23,20 @@ std::string to_string(celeritas::GeneratorType t)
     return "nogen";
 }
 
+BaseGeneratorOffload::Options BaseGeneratorOffload::Options::from_config(inp::Config config)
+{
+    BaseGeneratorOffload::Options opts;
+    opts.track_celer = config.output.record_celeritas;
+    opts.track_g4 = config.output.record_geant4;
+    opts.allowed_names = config.detector.allowed_volumes;
+    return opts;
+}
 
 
 BaseGeneratorOffload::BaseGeneratorOffload(celeritas::GeneratorType gen_type, Options opts)
     : allowed_names_(opts.allowed_names)
-    , track_photons_(opts.track_photons)
+    , track_g4_(opts.track_g4)
+    , track_celer_(opts.track_celer)
     , gen_type_(gen_type)
 {}
 
@@ -83,11 +94,11 @@ void BaseGeneratorOffload::offload(G4Track const& track, G4Step const& step, uns
         data.num_photons = static_cast<celeritas::size_type>(num_photons);
         data.continuous_edep_fraction = 1;
 
-        if (gen_type_ == celeritas::GeneratorType::cherenkov && (data.points[celeritas::StepPoint::pre].speed.value() == 0 || data.points[celeritas::StepPoint::post].speed.value() == 0))
-        {
-            std::cout << "At rest step point for cherenkov. Losing " << num_photons << " photons\n";
-            return;
-        }
+        // if (gen_type_ == celeritas::GeneratorType::cherenkov && (data.points[celeritas::StepPoint::pre].speed.value() == 0 || data.points[celeritas::StepPoint::post].speed.value() == 0))
+        // {
+        //     std::cout << "At rest step point for cherenkov. Losing " << num_photons << " photons\n";
+        //     return;
+        // }
 
         // Push generator distribution for this step to offload
         auto& local = celeritas::detail::IntegrationSingleton::instance().local_offload();
@@ -95,10 +106,13 @@ void BaseGeneratorOffload::offload(G4Track const& track, G4Step const& step, uns
 
         CELER_VALIDATE(gen_offload,
                        << "LocalOpticalGenOffload required for "
-                          "CherenkovOffload");
+                          "GeneratorOffload");
 
-        CELER_LOG_LOCAL(debug)
-            << "Offloading " << data.num_photons << " Cherenkov photons";
+        // CELER_LOG_LOCAL(debug)
+        if (data.num_photons > 1000)
+        {
+            G4cout << "Offloading " << data.num_photons << " " << to_string(gen_type_) << " photons" << G4endl;
+        }
 
         gen_offload->Push(data);
     }
@@ -118,11 +132,11 @@ void CherenkovOffload::PreparePhysicsTable(G4ParticleDefinition const& particle)
 G4VParticleChange* CherenkovOffload::PostStepDoIt(G4Track const& track, G4Step const& step)
 {
     bool tracking_vol = this->is_allowed_volume(step);
-    this->SetStackPhotons(this->track_photons() && tracking_vol);
+    this->SetStackPhotons(this->track_g4() && tracking_vol);
 
     auto* result = G4Cerenkov::PostStepDoIt(track, step);
 
-    if (tracking_vol)
+    if (this->track_celer() && tracking_vol && this->GetNumPhotons() > 0)
     {
         this->offload(track, step, this->GetNumPhotons());
     }
@@ -145,11 +159,11 @@ void ScintillationOffload::PreparePhysicsTable(G4ParticleDefinition const& parti
 G4VParticleChange* ScintillationOffload::PostStepDoIt(G4Track const& track, G4Step const& step)
 {
     bool tracking_vol = this->is_allowed_volume(step);
-    this->SetStackPhotons(this->track_photons() && tracking_vol);
+    this->SetStackPhotons(this->track_g4() && tracking_vol);
 
     auto* result = G4Scintillation::PostStepDoIt(track, step);
 
-    if (tracking_vol)
+    if (this->track_celer() && tracking_vol && this->GetNumPhotons() > 0)
     {
         this->offload(track, step, this->GetNumPhotons());
     }

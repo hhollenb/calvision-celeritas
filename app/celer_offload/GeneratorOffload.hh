@@ -9,6 +9,11 @@
 
 #include "celeritas/optical/Types.hh"
 
+namespace inp
+{
+class Config;
+} // namespace inp
+
 class BaseGeneratorOffload
 {
   public:
@@ -17,8 +22,11 @@ class BaseGeneratorOffload
 
     struct Options
     {
-        bool track_photons;
+        bool track_celer;
+        bool track_g4;
         std::optional<AllowedVolNames> allowed_names{};
+
+        static Options from_config(inp::Config);
     };
 
   public:
@@ -26,7 +34,8 @@ class BaseGeneratorOffload
 
     void make_allowed_volumes();
     bool is_allowed_volume(G4Step const& step) const;
-    bool track_photons() const { return track_photons_; }
+    bool track_g4() const { return track_g4_; }
+    bool track_celer() const { return track_celer_; }
 
     void offload(G4Track const& track, G4Step const& step, unsigned int num_photons);
 
@@ -34,7 +43,8 @@ class BaseGeneratorOffload
     std::optional<AllowedVolNames> allowed_names_;
     std::optional<AllowedVols> allowed_vols_;
     celeritas::GeneratorType gen_type_;
-    bool track_photons_;
+    bool track_g4_;
+    bool track_celer_;
 };
 
 

@@ -29,5 +29,5 @@ void ActionInitialization::Build() const
     PrimaryGeneratorAction* primary_action = new PrimaryGeneratorAction(config_.primary);
     this->SetUserAction(new SignalRunAction(config_, primary_action));
     this->SetUserAction(primary_action);
-    this->SetUserAction(new EventAction());
+    this->SetUserAction(new EventAction(config_.output.record_celeritas));
 }

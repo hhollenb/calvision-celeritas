@@ -11,7 +11,7 @@
 class PhysicsList : public FTFP_BERT
 {
   public:
-    PhysicsList(std::vector<std::string> const& allowed_vols);
+    PhysicsList(BaseGeneratorOffload::Options gen_opts);
 
     celeritas::GeantOpticalPhysicsOptions optical_options() const;
     celeritas::GeantPhysicsOptions physics_options() const;

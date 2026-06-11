@@ -23,8 +23,8 @@ void make_event_comparisons(std::string const& run_name, std::string const& even
             {
                 std::unique_ptr<TCanvas> canvas = std::make_unique<TCanvas>("canvas", "canvas", 800, 800);
 
-                TH1* g4_hist = event_dir->Get<TH1>((detector_name + "Geant4SignalHitsCollection_" + gen_type + "_" + hist_name).c_str());
-                TH1* cel_hist = event_dir->Get<TH1>((detector_name + "CeleritasSignalHitsCollection_" + gen_type + "_" + hist_name).c_str());
+                TH1* g4_hist = event_dir->Get<TH1>((detector_name + "_Geant4_" + gen_type + "_" + hist_name).c_str());
+                TH1* cel_hist = event_dir->Get<TH1>((detector_name + "_Celeritas_" + gen_type + "_" + hist_name).c_str());
 
                 TRatioPlot* ratio_hist = new TRatioPlot(g4_hist, cel_hist);
                 ratio_hist->Draw();
@@ -39,7 +39,7 @@ void make_event_comparisons(std::string const& run_name, std::string const& even
 
 void plot_comparison()
 {
-    TFile* file = TFile::Open("output_electrons_geant.root");
+    TFile* file = TFile::Open("output_electron.root");
 
     for (TObject* run_obj : *file->GetListOfKeys())
     {

@@ -57,12 +57,20 @@ void SignalRunAction::BeginOfRunAction(G4Run const* run)
         primary_action_->set_energy(config_.primary.energies[run->GetRunID()]);
     }
 
-    celeritas::UserActionIntegration::Instance().BeginOfRunAction(run);
+    if (config_.output.record_celeritas)
+    {
+        // celeritas::TrackingManagerIntegration::Instance().BeginOfRunAction(run);
+        celeritas::UserActionIntegration::Instance().BeginOfRunAction(run);
+    }
 }
 
 void SignalRunAction::EndOfRunAction(G4Run const* run)
 {
-    celeritas::UserActionIntegration::Instance().EndOfRunAction(run);
+    if (config_.output.record_celeritas)
+    {
+        // celeritas::TrackingManagerIntegration::Instance().EndOfRunAction(run);
+        celeritas::UserActionIntegration::Instance().EndOfRunAction(run);
+    }
 
     if (this->IsMaster())
     {

@@ -62,6 +62,7 @@ set(_src_app
     app/celer_offload/RootSignalWriter.cc
     app/celer_offload/EventAction.cc
     app/celer_offload/GeneratorOffload.cc
+    app/celer_offload/Config.cc
 )
 
 add_executable(g4_mt_app app/celer_offload/main.cc ${_src_app})
