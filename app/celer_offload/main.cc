@@ -2,12 +2,19 @@
 
 #include "TROOT.h"
 
-int main(void)
+int main(int argc, char** argv)
 {
+    if (argc != 2)
+    {
+        std::cerr << "Usage: " << argv[0] << " [config.json]\n";
+        return 1;
+    }
+
+
     ROOT::EnableThreadSafety();
 
 
-    inp::Config config;
+    // inp::Config config;
     // config.num_events = 6;
 
     // config.primary.pdg = 11;
@@ -34,10 +41,7 @@ int main(void)
     // config.output.output_filename = "output_electrons_geant.root";
     // config.output.record_geant4 = true;
 
-    config = inp::from_json_file("config.json");
-
-
-    Runner runner{std::move(config)};
+    Runner runner{inp::from_json_file(argv[1])};
     runner();
 
     return 0;

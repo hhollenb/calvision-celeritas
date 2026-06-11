@@ -39,7 +39,7 @@ void make_event_comparisons(std::string const& run_name, std::string const& even
 
 void plot_comparison()
 {
-    TFile* file = TFile::Open("output_electron.root");
+    TFile* file = TFile::Open("output_pion0.root");
 
     for (TObject* run_obj : *file->GetListOfKeys())
     {
