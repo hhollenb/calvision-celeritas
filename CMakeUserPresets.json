@@ -26,7 +26,7 @@
         "name": "rivanna",
         "inherits": [".base"],
         "cacheVariables": {
-            "CMAKE_PREFIX_PATH": "../celeritas/install-rivanna-debug",
+            "CMAKE_PREFIX_PATH": "../celeritas/install-rivanna",
             "CMAKE_CXX_FLAGS": "-march=x86-64-v3"
         }
     }

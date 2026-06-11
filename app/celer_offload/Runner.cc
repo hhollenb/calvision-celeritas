@@ -8,7 +8,7 @@
 #include "PhysicsList.hh"
 #include "ActionInitialization.hh"
 
-celeritas::SetupOptions celeritas_options(OpticalHitRecorder* hit_recorder)
+celeritas::SetupOptions celeritas_options(bool use_device, OpticalHitRecorder* hit_recorder)
 {
     celeritas::SetupOptions so;
     so.max_num_tracks = 1024;
@@ -17,20 +17,20 @@ celeritas::SetupOptions celeritas_options(OpticalHitRecorder* hit_recorder)
     so.output_file = "";
     so.make_along_step = celeritas::UniformAlongStepFactory();
 
-    so.optical = [hit_recorder] {
+    so.optical = [&] {
         celeritas::OpticalSetupOptions opts;
-        opts.capacity = celeritas::inp::OpticalStateCapacity::from_default(false);
-        // opts.capacity.generators *= 10;
+        opts.capacity = celeritas::inp::OpticalStateCapacity::from_default(use_device);
         opts.generator = celeritas::inp::OpticalOffloadGenerator{};
         opts.detectors.callback = [hit_recorder] (celeritas::Span<celeritas::optical::DetectorHit const> hits) { (*hit_recorder)(hits); };
 
-        // Only for tests with massive photon counts
-        // opts.limits.steps = 1000;
-        // opts.limits.step_iters = 1000;
+        opts.limits.steps = 150;
         return opts;
     }();
 
     so.offload_particles = std::vector<G4ParticleDefinition*>{};
+
+    // so.action_times = true;
+
     return so;
 }
 
@@ -51,7 +51,7 @@ Runner::Runner(inp::Config config)
     run_manager_->SetUserInitialization(new ActionInitialization(config_));
 
     // celeritas::TrackingManagerIntegration::Instance().SetOptions(celeritas_options(hit_recorder_.get()));
-    celeritas::UserActionIntegration::Instance().SetOptions(celeritas_options(hit_recorder_.get()));
+    celeritas::UserActionIntegration::Instance().SetOptions(celeritas_options(true, hit_recorder_.get()));
 
     run_manager_->Initialize();
 }

@@ -3,7 +3,7 @@
 #include <CeleritasG4.hh>
 
 // #include "accel/gen/CherenkovOffload.hh"
-// #include "accel/gen/ScintillationOffload.hh"
+#include "accel/gen/ScintillationOffload.hh"
 
 PhysicsList::PhysicsList(BaseGeneratorOffload::Options gen_opts)
     : FTFP_BERT(0)
@@ -27,9 +27,12 @@ celeritas::GeantOpticalPhysicsOptions PhysicsList::optical_options() const
     optical.scintillation->custom_scintillation = [this]() {
             return std::make_unique<ScintillationOffload>(gen_opts_);
         };
+    // optical.scintillation->custom_scintillation = [this]() {
+    //         return std::make_unique<celeritas::ScintillationOffload>();
+    //     };
 
-    optical.cherenkov->stack_photons = true;
-    optical.scintillation->stack_photons = true;
+    optical.cherenkov->stack_photons = false;
+    optical.scintillation->stack_photons = false;
 
     optical.boundary->invoke_sd = true;
     optical.absorption = true;
