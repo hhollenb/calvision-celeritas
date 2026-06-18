@@ -1,0 +1,35 @@
+{
+    "num_events": 10,
+    "num_threads": 1,
+    "primary":
+    {
+        "pdg": 11,
+        "energy": [10],
+        "direction": [0, 0, 1.0],
+        "position": [0, 0, -50]
+    },
+    "detector":
+    {
+        "geometry_filename": "dual_readout.gdml",
+        "detectors": {
+            "rsc_detector": "rear",
+            "fsc_detector": "front"
+        },
+        "allowed_volumes": [
+            "rsc_crystal",
+            "rsc_resin_window",
+            "rsc_silicone_gap",
+            "rsc_air_gap",
+            "fsc_crystal",
+            "fsc_silicone_gap",
+            "fsc_resin_window",
+            "fsc_air_gap"
+        ]
+    },
+    "output":
+    {
+        "output_filename": "output_electron.root",
+        "record_geant4": true,
+        "record_celeritas": true
+    }
+}

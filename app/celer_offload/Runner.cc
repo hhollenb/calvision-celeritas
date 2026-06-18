@@ -14,7 +14,7 @@ celeritas::SetupOptions celeritas_options(bool use_device, OpticalHitRecorder* h
     so.max_num_tracks = 1024;
     so.initializer_capacity = 1024;
     so.secondary_stack_factor = 2.0;
-    so.output_file = "";
+    so.output_file = "celeritas.out.json";
     so.make_along_step = celeritas::UniformAlongStepFactory();
 
     so.optical = [&] {
@@ -23,7 +23,9 @@ celeritas::SetupOptions celeritas_options(bool use_device, OpticalHitRecorder* h
         opts.generator = celeritas::inp::OpticalOffloadGenerator{};
         opts.detectors.callback = [hit_recorder] (celeritas::Span<celeritas::optical::DetectorHit const> hits) { (*hit_recorder)(hits); };
 
-        opts.limits.steps = 150;
+        // For max steps calculation
+        // opts.step.emplace();
+        // opts.limits.steps = 200;
         return opts;
     }();
 
@@ -50,8 +52,11 @@ Runner::Runner(inp::Config config)
     run_manager_->SetUserInitialization(new PhysicsList(BaseGeneratorOffload::Options::from_config(config_)));
     run_manager_->SetUserInitialization(new ActionInitialization(config_));
 
-    // celeritas::TrackingManagerIntegration::Instance().SetOptions(celeritas_options(hit_recorder_.get()));
-    celeritas::UserActionIntegration::Instance().SetOptions(celeritas_options(true, hit_recorder_.get()));
+    if (config.output.record_celeritas)
+    {
+        // celeritas::TrackingManagerIntegration::Instance().SetOptions(celeritas_options(hit_recorder_.get()));
+        celeritas::UserActionIntegration::Instance().SetOptions(celeritas_options(true, hit_recorder_.get()));
+    }
 
     run_manager_->Initialize();
 }
@@ -60,7 +65,7 @@ void Runner::operator()()
 {
     for (unsigned int i = 0; i < config_.primary.energies.size(); i++)
     {
-        G4cout << "Run " << i << " energy " << config_.primary.energies[i] << G4endl;
+        G4cout << "Run " << i << " energy " << (config_.primary.energies[i] / CLHEP::GeV) << G4endl;
         run_manager_->BeamOn(config_.num_events);
     }
 }

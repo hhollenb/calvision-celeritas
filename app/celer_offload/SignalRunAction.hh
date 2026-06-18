@@ -12,6 +12,7 @@
 #include "PrimaryGeneratorAction.hh"
 #include "RootSignalWriter.hh"
 
+
 class SignalRun : public G4Run
 {
   public:
@@ -21,9 +22,11 @@ class SignalRun : public G4Run
     void Merge(G4Run const*) override;
 
     std::map<unsigned int, EventHistograms> const& event_hists() const;
+    std::map<unsigned int, ShowerLeakageEnergy> const& event_leakage() const;
 
   private:
     std::map<unsigned int, EventHistograms> event_hists_;
+    std::map<unsigned int, ShowerLeakageEnergy> event_leakage_;
 };
 
 class SignalRunAction : public G4UserRunAction

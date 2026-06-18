@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+  <materials>
+    <isotope N="16" Z="8" name="O160x55db26e68720">
+      <atom unit="g/mole" value="15.9949"/>
+    </isotope>
+    <isotope N="17" Z="8" name="O170x55db26e68bd0">
+      <atom unit="g/mole" value="16.9991"/>
+    </isotope>
+    <isotope N="18" Z="8" name="O180x55db26e68c40">
+      <atom unit="g/mole" value="17.9992"/>
+    </isotope>
+    <element name="O0x55db26e68c90">
+      <fraction n="0.99757" ref="O160x55db26e68720"/>
+      <fraction n="0.00038" ref="O170x55db26e68bd0"/>
+      <fraction n="0.00205" ref="O180x55db26e68c40"/>
+    </element>
+    <isotope N="1" Z="1" name="H10x55db26e3c5f0">
+      <atom unit="g/mole" value="1.00782503081372"/>
+    </isotope>
+    <isotope N="2" Z="1" name="H20x55db26e3c8e0">
+      <atom unit="g/mole" value="2.01410199966617"/>
+    </isotope>
+    <element name="hydrogen0x55db26e1c300">
+      <fraction n="0.999885" ref="H10x55db26e3c5f0"/>
+      <fraction n="0.000115" ref="H20x55db26e3c8e0"/>
+    </element>
+    <isotope N="209" Z="83" name="Bi2090x55db26e69450">
+      <atom unit="g/mole" value="208.98"/>
+    </isotope>
+    <element name="Bi0x55db26e694a0">
+      <fraction n="1" ref="Bi2090x55db26e69450"/>
+    </element>
+    <isotope N="70" Z="32" name="Ge700x55db26e69790">
+      <atom unit="g/mole" value="69.9243"/>
+    </isotope>
+    <isotope N="72" Z="32" name="Ge720x55db26e697e0">
+      <atom unit="g/mole" value="71.9221"/>
+    </isotope>
+    <isotope N="73" Z="32" name="Ge730x55db26e69850">
+      <atom unit="g/mole" value="72.9235"/>
+    </isotope>
+    <isotope N="74" Z="32" name="Ge740x55db26e698a0">
+      <atom unit="g/mole" value="73.9212"/>
+    </isotope>
+    <isotope N="76" Z="32" name="Ge760x55db26e698f0">
+      <atom unit="g/mole" value="75.9214"/>
+    </isotope>
+    <element name="Ge0x55db26e69990">
+      <fraction n="0.2084" ref="Ge700x55db26e69790"/>
+      <fraction n="0.2754" ref="Ge720x55db26e697e0"/>
+      <fraction n="0.0773" ref="Ge730x55db26e69850"/>
+      <fraction n="0.3628" ref="Ge740x55db26e698a0"/>
+      <fraction n="0.0761" ref="Ge760x55db26e698f0"/>
+    </element>
+    <material name="crystal_material0x55db26e736b0" state="solid">
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="473.773760205215"/>
+      <D unit="g/cm3" value="7.1"/>
+      <fraction n="0.67098515225969" ref="Bi0x55db26e694a0"/>
+      <fraction n="0.17489826418611" ref="Ge0x55db26e69990"/>
+      <fraction n="0.1541165835542" ref="O0x55db26e68c90"/>
+    </material>
+    <material name="vacuum0x55db26e3cc70" state="gas">
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="19.2"/>
+      <D unit="g/cm3" value="1e-25"/>
+      <fraction n="1" ref="hydrogen0x55db26e1c300"/>
+    </material>
+  </materials>
+
+  <solids>
+    <box lunit="mm" name="crystal_box" x="5000" y="5000" z="5000"/>
+    <box lunit="mm" name="world_box" x="100000" y="100000" z="100000"/>
+  </solids>
+
+  <structure>
+    <volume name="crystal">
+      <materialref ref="crystal_material0x55db26e736b0"/>
+      <solidref ref="crystal_box"/>
+      <auxiliary auxtype="SensDet" auxvalue="EdepDetector"/>
+    </volume>
+    <volume name="world">
+      <materialref ref="vacuum0x55db26e3cc70"/>
+      <solidref ref="world_box"/>
+      <physvol name="crystal_pv">
+        <volumeref ref="crystal"/>
+        <position name="crystal_pos" unit="mm" x="0" y="0" z="2500"/>
+      </physvol>
+    </volume>
+  </structure>
+
+  <setup name="Default" version="1.0">
+    <world ref="world"/>
+  </setup>
+
+</gdml>

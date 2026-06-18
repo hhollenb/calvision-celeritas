@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+  <define>
+    <matrix coldim="2" name="RINDEX0x5584e95c6680" values="1.1e-06 3.8 1.77e-06 3.8 2.066e-06 3.8 2.47e-06 3.8 2.75e-06 3.8 3.099e-06 3.8 4.002e-06 3.8 6e-06 3.8"/>
+    <matrix coldim="2" name="GROUPVEL0x5584e95c6800" values="1.1e-06 78.8928 1.435e-06 78.8928 1.918e-06 78.8928 2.268e-06 78.8928 2.61e-06 78.8928 2.9245e-06 78.8928 3.5505e-06 78.8928 6e-06 78.8928"/>
+    <matrix coldim="2" name="REFLECTIVITY0x5584e95b5f70" values="1e-07 0 0.0001 0"/>
+    <matrix coldim="2" name="TRANSMITTANCE0x5584e95b6050" values="1e-07 1 0.0001 1"/>
+    <matrix coldim="2" name="RINDEX0x5584e95c9720" values="1.1e-06 1.54 1.77e-06 1.55 2.066e-06 1.55 2.47e-06 1.56 2.75e-06 1.57 3.099e-06 1.58 4.002e-06 1.6 6e-06 1.65"/>
+    <matrix coldim="2" name="GROUPVEL0x5584e95c98a0" values="1.1e-06 192.049 1.435e-06 191.436 1.918e-06 193.414 2.268e-06 186.092 2.61e-06 180.802 2.9245e-06 180.74 3.5505e-06 179.709 6e-06 169.043"/>
+    <matrix coldim="2" name="ABSLENGTH0x5584e95c9c80" values="1.1e-06 361.9 1.5498e-06 579.1 1.65312e-06 434.3 1.71013e-06 789.6 1.7712e-06 542.9 1.8368e-06 3619 1.90745e-06 1737 1.98375e-06 3619 2.0664e-06 542.9 2.10143e-06 1300 2.13766e-06 1450 2.17516e-06 1600 2.214e-06 1800 2.25426e-06 1650 2.296e-06 1700 2.33932e-06 1400 2.38431e-06 1600 2.43106e-06 1500 2.47968e-06 1450 2.53029e-06 1300 2.583e-06 1200 2.63796e-06 1000 2.69531e-06 800 2.7552e-06 723.8 2.81782e-06 400 2.88335e-06 120 2.952e-06 50 3.0996e-06 20 3.54241e-06 20 4.13281e-06 10"/>
+    <matrix coldim="2" name="RINDEX0x5584e95ccb10" values="1.1e-06 1.43 1.5e-06 1.43 1.75e-06 1.43 2e-06 1.43 2.034e-06 1.43 2.068e-06 1.43 2.103e-06 1.43 2.139e-06 1.43 2.177e-06 1.43 2.216e-06 1.43 2.256e-06 1.43 2.298e-06 1.43 2.341e-06 1.43 2.386e-06 1.43 2.433e-06 1.43 2.481e-06 1.43 2.532e-06 1.43 2.585e-06 1.43 2.64e-06 1.43 2.697e-06 1.43 2.757e-06 1.43 2.82e-06 1.43 2.885e-06 1.43 2.954e-06 1.43 3.026e-06 1.43 3.102e-06 1.43 3.181e-06 1.43 3.265e-06 1.43 3.353e-06 1.43 3.446e-06 1.43 3.545e-06 1.43 3.649e-06 1.43 3.76e-06 1.43 3.877e-06 1.43 4.002e-06 1.43 4.136e-06 1.43 6e-06 1.43"/>
+    <matrix coldim="2" name="GROUPVEL0x5584e95cce50" values="1.1e-06 209.645 1.3e-06 209.645 1.625e-06 209.645 1.875e-06 209.645 2.017e-06 209.645 2.051e-06 209.645 2.0855e-06 209.645 2.121e-06 209.645 2.158e-06 209.645 2.1965e-06 209.645 2.236e-06 209.645 2.277e-06 209.645 2.3195e-06 209.645 2.3635e-06 209.645 2.4095e-06 209.645 2.457e-06 209.645 2.5065e-06 209.645 2.5585e-06 209.645 2.6125e-06 209.645 2.6685e-06 209.645 2.727e-06 209.645 2.7885e-06 209.645 2.8525e-06 209.645 2.9195e-06 209.645 2.99e-06 209.645 3.064e-06 209.645 3.1415e-06 209.645 3.223e-06 209.645 3.309e-06 209.645 3.3995e-06 209.645 3.4955e-06 209.645 3.597e-06 209.645 3.7045e-06 209.645 3.8185e-06 209.645 3.9395e-06 209.645 4.069e-06 209.645 6e-06 209.645"/>
+    <matrix coldim="2" name="ABSLENGTH0x5584e95cd340" values="1.1e-06 361.9 1.5498e-06 579.1 1.65312e-06 434.3 1.71013e-06 789.6 1.7712e-06 542.9 1.8368e-06 3619 1.90745e-06 1737 1.98375e-06 3619 2.0664e-06 542.9 2.10143e-06 1300 2.13766e-06 1450 2.17516e-06 1600 2.214e-06 1800 2.25426e-06 1650 2.296e-06 1700 2.33932e-06 1400 2.38431e-06 1600 2.43106e-06 1500 2.47968e-06 1450 2.53029e-06 1300 2.583e-06 1200 2.63796e-06 1000 2.69531e-06 800 2.7552e-06 723.8 2.81782e-06 400 2.88335e-06 120 2.952e-06 50 3.0996e-06 20 3.54241e-06 20 4.13281e-06 10"/>
+    <matrix coldim="2" name="RINDEX0x5584e95d03c0" values="1.234e-06 2.06 1.35e-06 2.06 1.5e-06 2.07 1.70074e-06 2.08 2.0068e-06 2.1 2.20533e-06 2.11695 2.5164e-06 2.14639 2.792e-06 2.1775 3.0291e-06 2.2085 3.2499e-06 2.2416 3.4382e-06 2.27346 3.6487e-06 2.3136 4.065e-06 2.4104"/>
+    <matrix coldim="2" name="GROUPVEL0x5584e95d0580" values="1.234e-06 145.53 1.292e-06 145.53 1.425e-06 138.798 1.60037e-06 139.139 1.85377e-06 135.6 2.10607e-06 131.019 2.36087e-06 127.312 2.6542e-06 121.803 2.91055e-06 116.5 3.1395e-06 111.22 3.34405e-06 106.189 3.54345e-06 100.973 4.065e-06 90.672"/>
+    <matrix coldim="2" name="ABSLENGTH0x5584e95d0a40" values="1e-06 33 2.0855e-06 33.0033 2.11864e-06 33.0371 2.16044e-06 34.8153 2.1976e-06 33.1148 2.25579e-06 33.1675 2.29462e-06 32.6573 2.36359e-06 32.7139 2.40625e-06 32.7472 2.47619e-06 32.7998 2.56312e-06 31.8107 2.65177e-06 31.8654 2.73453e-06 30.4488 2.79943e-06 29.5753 2.8568e-06 29.1673 2.96738e-06 29.2133 3.0714e-06 28.4188 3.17637e-06 27.6633 3.28173e-06 26.235 3.3682e-06 23.7507 3.43996e-06 21.4588 3.47895e-06 20.3666 3.51479e-06 18.4798 3.55138e-06 17.0579 3.59292e-06 15.4703 3.61404e-06 14.2529 3.63541e-06 13.391 3.66575e-06 12.1647 3.6966e-06 11.1442 3.73698e-06 9.54226 3.75978e-06 8.746 3.78744e-06 7.66812 3.81557e-06 6.94589 3.83445e-06 6.20925 3.84869e-06 5.62971 3.86776e-06 4.87182 3.87238e-06 4.3981 3.89173e-06 3.96843 3.90137e-06 3.65505 3.91555e-06 2.98599 3.91605e-06 3.39913 3.9208e-06 3.16656 3.93039e-06 2.84514 3.93491e-06 2.5401 3.93507e-06 2.62382 3.93526e-06 2.73189 3.94445e-06 2.27577 3.94464e-06 2.35105 3.94485e-06 2.44944 3.94891e-06 2.04643 3.94907e-06 2.10043 3.94926e-06 2.17148 3.94941e-06 2.22738 3.95388e-06 2.00721 3.96e-06 0"/>
+    <matrix coldim="2" name="SCINTILLATIONCOMPONENT10x5584e95d1080" values="1.67558e-06 0 1.69521e-06 0.0127119 1.73694e-06 0.0317797 1.77865e-06 0.0614407 1.8157e-06 0.095339 1.83823e-06 0.112288 1.87546e-06 0.150424 1.91176e-06 0.188559 1.92918e-06 0.209746 1.94437e-06 0.228814 1.9598e-06 0.252119 1.97812e-06 0.275424 1.99409e-06 0.298729 2.01033e-06 0.319915 2.0436e-06 0.366525 2.06066e-06 0.389831 2.07509e-06 0.413136 2.10158e-06 0.459746 2.11659e-06 0.483051 2.13182e-06 0.506356 2.14416e-06 0.527542 2.15978e-06 0.550847 2.1885e-06 0.601695 2.2015e-06 0.625 2.23134e-06 0.67161 2.262e-06 0.71822 2.2759e-06 0.743644 2.29352e-06 0.769068 2.30422e-06 0.792373 2.33693e-06 0.838983 2.37819e-06 0.889831 2.4449e-06 0.963983 2.46935e-06 0.985169 2.51547e-06 1 2.56778e-06 0.997881 2.60389e-06 0.980932 2.62697e-06 0.959746 2.65047e-06 0.934322 2.68408e-06 0.891949 2.7336e-06 0.815678 2.77976e-06 0.743644 2.81675e-06 0.669492 2.85474e-06 0.618644 2.89944e-06 0.523305 2.92809e-06 0.476695 2.96916e-06 0.402542 2.99921e-06 0.347458 3.05487e-06 0.273305 3.11263e-06 0.224576 3.17262e-06 0.175847 3.22791e-06 0.129237 3.25629e-06 0.110169 3.29247e-06 0.0932203 3.33696e-06 0.0741525 3.38268e-06 0.0550847 3.43761e-06 0.0423729 3.49437e-06 0.0254237 3.56157e-06 0.0169492 3.64929e-06 0.00847458"/>
+    <matrix coldim="1" name="SCINTILLATIONYIELD0x5584e95ce360" values="0.45/keV"/>
+    <matrix coldim="1" name="RESOLUTIONSCALE0x5584e95ce360" values="1"/>
+    <matrix coldim="1" name="SCINTILLATIONTIMECONSTANT10x5584e95ce360" values="300*ns"/>
+    <matrix coldim="1" name="SCINTILLATIONYIELD10x5584e95ce360" values="1"/>
+    <matrix coldim="2" name="RINDEX0x5584e95d3d40" values="1.1e-06 1 4.136e-06 1"/>
+    <matrix coldim="2" name="GROUPVEL0x5584e95d3e40" values="1.1e-06 299.792 4.136e-06 299.792"/>
+    <matrix coldim="2" name="ABSLENGTH0x5584e95d3f80" values="1e-07 1e+20 0.0001 1e+20"/>
+    <matrix coldim="2" name="RINDEX0x5584e95aaa60" values="1e-07 1 0.0001 1"/>
+    <matrix coldim="2" name="GROUPVEL0x5584e95aab40" values="1e-07 299.792 0.0001 299.792"/>
+    <matrix coldim="2" name="ABSLENGTH0x5584e95aac20" values="1e-07 1e+20 0.0001 1e+20"/>
+  </define>
+
+  <materials>
+    <isotope N="36" Z="18" name="Ar360x5584e95c2640">
+      <atom unit="g/mole" value="35.9675"/>
+    </isotope>
+    <isotope N="38" Z="18" name="Ar380x5584e95c2700">
+      <atom unit="g/mole" value="37.9627"/>
+    </isotope>
+    <isotope N="40" Z="18" name="Ar400x5584e95c2770">
+      <atom unit="g/mole" value="39.9624"/>
+    </isotope>
+    <element name="Ar0x5584e95c27c0">
+      <fraction n="0.003365" ref="Ar360x5584e95c2640"/>
+      <fraction n="0.000632" ref="Ar380x5584e95c2700"/>
+      <fraction n="0.996003" ref="Ar400x5584e95c2770"/>
+    </element>
+    <isotope N="14" Z="7" name="N140x5584e95c28a0">
+      <atom unit="g/mole" value="14.0031"/>
+    </isotope>
+    <isotope N="15" Z="7" name="N150x5584e95c2910">
+      <atom unit="g/mole" value="15.0001"/>
+    </isotope>
+    <element name="N0x5584e95c2980">
+      <fraction n="0.99632" ref="N140x5584e95c28a0"/>
+      <fraction n="0.00368" ref="N150x5584e95c2910"/>
+    </element>
+    <isotope N="16" Z="8" name="O160x5584e95c2690">
+      <atom unit="g/mole" value="15.9949"/>
+    </isotope>
+    <isotope N="17" Z="8" name="O170x5584e95c2b40">
+      <atom unit="g/mole" value="16.9991"/>
+    </isotope>
+    <isotope N="18" Z="8" name="O180x5584e95c2bb0">
+      <atom unit="g/mole" value="17.9992"/>
+    </isotope>
+    <element name="O0x5584e95c2c00">
+      <fraction n="0.99757" ref="O160x5584e95c2690"/>
+      <fraction n="0.00038" ref="O170x5584e95c2b40"/>
+      <fraction n="0.00205" ref="O180x5584e95c2bb0"/>
+    </element>
+    <material name="photocathode_material0x5584e95c3ae0" state="gas">
+      <property name="RINDEX" ref="RINDEX0x5584e95c6680"/>
+      <property name="GROUPVEL" ref="GROUPVEL0x5584e95c6800"/>
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="85.6436597755612"/>
+      <D unit="g/cm3" value="0.0012"/>
+      <fraction n="0.012" ref="Ar0x5584e95c27c0"/>
+      <fraction n="0.754" ref="N0x5584e95c2980"/>
+      <fraction n="0.234" ref="O0x5584e95c2c00"/>
+    </material>
+    <isotope N="12" Z="6" name="C120x5584e95c3100">
+      <atom unit="g/mole" value="12"/>
+    </isotope>
+    <isotope N="13" Z="6" name="C130x5584e95c3170">
+      <atom unit="g/mole" value="13.0034"/>
+    </isotope>
+    <element name="C0x5584e95c31e0">
+      <fraction n="0.9893" ref="C120x5584e95c3100"/>
+      <fraction n="0.0107" ref="C130x5584e95c3170"/>
+    </element>
+    <isotope N="1" Z="1" name="H10x5584e9596560">
+      <atom unit="g/mole" value="1.00782503081372"/>
+    </isotope>
+    <isotope N="2" Z="1" name="H20x5584e9596850">
+      <atom unit="g/mole" value="2.01410199966617"/>
+    </isotope>
+    <element name="hydrogen0x5584e9576270">
+      <fraction n="0.999885" ref="H10x5584e9596560"/>
+      <fraction n="0.000115" ref="H20x5584e9596850"/>
+    </element>
+    <isotope N="28" Z="14" name="Si280x5584e95c2df0">
+      <atom unit="g/mole" value="27.9769"/>
+    </isotope>
+    <isotope N="29" Z="14" name="Si290x5584e95c2e60">
+      <atom unit="g/mole" value="28.9765"/>
+    </isotope>
+    <isotope N="30" Z="14" name="Si300x5584e95c2ed0">
+      <atom unit="g/mole" value="29.9738"/>
+    </isotope>
+    <element name="Si0x5584e95c2f20">
+      <fraction n="0.922296077703922" ref="Si280x5584e95c2df0"/>
+      <fraction n="0.0468319531680468" ref="Si290x5584e95c2e60"/>
+      <fraction n="0.0308719691280309" ref="Si300x5584e95c2ed0"/>
+    </element>
+    <material name="resin_window_material0x5584e95c69e0" state="solid">
+      <property name="RINDEX" ref="RINDEX0x5584e95c9720"/>
+      <property name="GROUPVEL" ref="GROUPVEL0x5584e95c98a0"/>
+      <property name="ABSLENGTH" ref="ABSLENGTH0x5584e95c9c80"/>
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="145.906620453529"/>
+      <D unit="g/cm3" value="0.9645"/>
+      <fraction n="0.006" ref="C0x5584e95c31e0"/>
+      <fraction n="0.006" ref="hydrogen0x5584e9576270"/>
+      <fraction n="0.234" ref="O0x5584e95c2c00"/>
+      <fraction n="0.754" ref="Si0x5584e95c2f20"/>
+    </material>
+    <material name="silicone_gap_material0x5584e95c9f60" state="solid">
+      <property name="RINDEX" ref="RINDEX0x5584e95ccb10"/>
+      <property name="GROUPVEL" ref="GROUPVEL0x5584e95cce50"/>
+      <property name="ABSLENGTH" ref="ABSLENGTH0x5584e95cd340"/>
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="145.906620453529"/>
+      <D unit="g/cm3" value="0.9645"/>
+      <fraction n="0.006" ref="C0x5584e95c31e0"/>
+      <fraction n="0.006" ref="hydrogen0x5584e9576270"/>
+      <fraction n="0.234" ref="O0x5584e95c2c00"/>
+      <fraction n="0.754" ref="Si0x5584e95c2f20"/>
+    </material>
+    <isotope N="209" Z="83" name="Bi2090x5584e95c33c0">
+      <atom unit="g/mole" value="208.98"/>
+    </isotope>
+    <element name="Bi0x5584e95c3410">
+      <fraction n="1" ref="Bi2090x5584e95c33c0"/>
+    </element>
+    <isotope N="70" Z="32" name="Ge700x5584e95c3700">
+      <atom unit="g/mole" value="69.9243"/>
+    </isotope>
+    <isotope N="72" Z="32" name="Ge720x5584e95c3750">
+      <atom unit="g/mole" value="71.9221"/>
+    </isotope>
+    <isotope N="73" Z="32" name="Ge730x5584e95c37c0">
+      <atom unit="g/mole" value="72.9235"/>
+    </isotope>
+    <isotope N="74" Z="32" name="Ge740x5584e95c3810">
+      <atom unit="g/mole" value="73.9212"/>
+    </isotope>
+    <isotope N="76" Z="32" name="Ge760x5584e95c3860">
+      <atom unit="g/mole" value="75.9214"/>
+    </isotope>
+    <element name="Ge0x5584e95c3900">
+      <fraction n="0.2084" ref="Ge700x5584e95c3700"/>
+      <fraction n="0.2754" ref="Ge720x5584e95c3750"/>
+      <fraction n="0.0773" ref="Ge730x5584e95c37c0"/>
+      <fraction n="0.3628" ref="Ge740x5584e95c3810"/>
+      <fraction n="0.0761" ref="Ge760x5584e95c3860"/>
+    </element>
+    <material name="crystal_material0x5584e95cd620" state="solid">
+      <property name="RINDEX" ref="RINDEX0x5584e95d03c0"/>
+      <property name="GROUPVEL" ref="GROUPVEL0x5584e95d0580"/>
+      <property name="ABSLENGTH" ref="ABSLENGTH0x5584e95d0a40"/>
+      <property name="SCINTILLATIONCOMPONENT1" ref="SCINTILLATIONCOMPONENT10x5584e95d1080"/>
+      <property name="SCINTILLATIONYIELD" ref="SCINTILLATIONYIELD0x5584e95ce360"/>
+      <property name="RESOLUTIONSCALE" ref="RESOLUTIONSCALE0x5584e95ce360"/>
+      <property name="SCINTILLATIONTIMECONSTANT1" ref="SCINTILLATIONTIMECONSTANT10x5584e95ce360"/>
+      <property name="SCINTILLATIONYIELD1" ref="SCINTILLATIONYIELD10x5584e95ce360"/>
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="473.773760205215"/>
+      <D unit="g/cm3" value="7.1"/>
+      <fraction n="0.67098515225969" ref="Bi0x5584e95c3410"/>
+      <fraction n="0.17489826418611" ref="Ge0x5584e95c3900"/>
+      <fraction n="0.1541165835542" ref="O0x5584e95c2c00"/>
+    </material>
+    <material name="air_gap_material0x5584e95d1520" state="gas">
+      <property name="RINDEX" ref="RINDEX0x5584e95d3d40"/>
+      <property name="GROUPVEL" ref="GROUPVEL0x5584e95d3e40"/>
+      <property name="ABSLENGTH" ref="ABSLENGTH0x5584e95d3f80"/>
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="85.6436597755612"/>
+      <D unit="g/cm3" value="0.0012"/>
+      <fraction n="0.012" ref="Ar0x5584e95c27c0"/>
+      <fraction n="0.754" ref="N0x5584e95c2980"/>
+      <fraction n="0.234" ref="O0x5584e95c2c00"/>
+    </material>
+    <material name="carbon_fiber_material0x5584e95d4060" state="solid">
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="73.3459987528156"/>
+      <D unit="g/cm3" value="1.69"/>
+      <fraction n="0.844913046548224" ref="C0x5584e95c31e0"/>
+      <fraction n="0.0425420841006469" ref="hydrogen0x5584e9576270"/>
+      <fraction n="0.112544869351129" ref="O0x5584e95c2c00"/>
+    </material>
+    <material name="vacuum0x5584e9596be0" state="gas">
+      <property name="RINDEX" ref="RINDEX0x5584e95aaa60"/>
+      <property name="GROUPVEL" ref="GROUPVEL0x5584e95aab40"/>
+      <property name="ABSLENGTH" ref="ABSLENGTH0x5584e95aac20"/>
+      <T unit="K" value="293.15"/>
+      <MEE unit="eV" value="19.2"/>
+      <D unit="g/cm3" value="1e-25"/>
+      <fraction n="1" ref="hydrogen0x5584e9576270"/>
+    </material>
+  </materials>
+
+  <solids>
+    <box lunit="mm" name="fsc_detector_box0x5584e95db7f0" x="10.75" y="10.75" z="5"/>
+    <opticalsurface finish="0" model="1" name="detector_surface0x5584e95b3f10" type="1" value="1">
+      <property name="REFLECTIVITY" ref="REFLECTIVITY0x5584e95b5f70"/>
+      <property name="TRANSMITTANCE" ref="TRANSMITTANCE0x5584e95b6050"/>
+    </opticalsurface>
+    <box lunit="mm" name="fsc_resin_window_box0x5584e95dfec0" x="10.75" y="10.75" z="0.175"/>
+    <box lunit="mm" name="fsc_silicone_gap_box0x5584e95e0360" x="10.75" y="10.75" z="1"/>
+    <box lunit="mm" name="fsc_crystal_box0x5584e95e07c0" x="10.75" y="10.75" z="67"/>
+    <box lunit="mm" name="fsc_air_gap_box0x5584e95e0af0" x="10.75" y="10.75" z="0.2"/>
+    <box lunit="mm" name="front_single_crystal_box0x5584e95d4e10" x="10.77" y="10.77" z="73.395"/>
+    <opticalsurface finish="1" model="1" name="reflective_wrapping0x5584e95d4c20" type="1" value="1"/>
+    <box lunit="mm" name="fsc_matrix_air_gap_box0x5584e95e0e70" x="10.8" y="10.8" z="73.395"/>
+    <box lunit="mm" name="fsc_matrix_structure_box0x5584e95e1260" x="10.9" y="10.9" z="73.395"/>
+    <box lunit="mm" name="fsc_matrix_tower_box0x5584e95e16f0" x="10.95" y="10.95" z="73.395"/>
+    <box lunit="mm" name="fsc_matrix_box0x5584e95e1b60" x="120.45" y="120.45" z="73.395"/>
+    <box lunit="mm" name="rsc_crystal_box0x5584e95e6e30" x="22" y="22" z="160"/>
+    <box lunit="mm" name="rsc_silicone_gap_box0x5584e95e71b0" x="22" y="22" z="1"/>
+    <box lunit="mm" name="rsc_resin_window_box0x5584e95e7650" x="22" y="22" z="0.175"/>
+    <box lunit="mm" name="rsc_detector_box0x5584e95e7ab0" x="22" y="22" z="5"/>
+    <box lunit="mm" name="rsc_air_gap_box0x5584e95e7e20" x="22" y="22" z="0.2"/>
+    <box lunit="mm" name="rear_single_crystal_box0x5584e95e6b10" x="22.02" y="22.02" z="166.395"/>
+    <box lunit="mm" name="rsc_matrix_air_gap_box0x5584e95e81a0" x="22.05" y="22.05" z="166.395"/>
+    <box lunit="mm" name="rsc_matrix_structure_box0x5584e95e8590" x="22.19" y="22.19" z="166.395"/>
+    <box lunit="mm" name="rsc_matrix_tower_box0x5584e95e8a20" x="22.2" y="22.2" z="166.395"/>
+    <box lunit="mm" name="rsc_matrix_box0x5584e95e8e90" x="111" y="111" z="166.395"/>
+    <box lunit="mm" name="world_box0x5584e95ea1b0" x="20000" y="20000" z="20000"/>
+  </solids>
+
+  <structure>
+    <volume name="fsc_detector0x5584e95db930">
+      <materialref ref="photocathode_material0x5584e95c3ae0"/>
+      <solidref ref="fsc_detector_box0x5584e95db7f0"/>
+      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
+    </volume>
+    <volume name="fsc_resin_window0x5584e95e0050">
+      <materialref ref="resin_window_material0x5584e95c69e0"/>
+      <solidref ref="fsc_resin_window_box0x5584e95dfec0"/>
+    </volume>
+    <volume name="fsc_silicone_gap0x5584e95e04a0">
+      <materialref ref="silicone_gap_material0x5584e95c9f60"/>
+      <solidref ref="fsc_silicone_gap_box0x5584e95e0360"/>
+    </volume>
+    <volume name="fsc_crystal0x5584e95e08a0">
+      <materialref ref="crystal_material0x5584e95cd620"/>
+      <solidref ref="fsc_crystal_box0x5584e95e07c0"/>
+    </volume>
+    <volume name="fsc_air_gap0x5584e95e0bf0">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="fsc_air_gap_box0x5584e95e0af0"/>
+    </volume>
+    <volume name="front_single_crystal0x5584e95d5300">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="front_single_crystal_box0x5584e95d4e10"/>
+      <physvol name="fsc_detector_pv0x5584e95dba80">
+        <volumeref ref="fsc_detector0x5584e95db930"/>
+        <position name="fsc_detector_pv0x5584e95dba80_pos" unit="mm" x="0" y="0" z="-34.1875"/>
+      </physvol>
+      <physvol name="fsc_resin_window_pv0x5584e95e01e0">
+        <volumeref ref="fsc_resin_window0x5584e95e0050"/>
+        <position name="fsc_resin_window_pv0x5584e95e01e0_pos" unit="mm" x="0" y="0" z="-31.6"/>
+      </physvol>
+      <physvol name="fsc_silicone_gap_pv0x5584e95e0630">
+        <volumeref ref="fsc_silicone_gap0x5584e95e04a0"/>
+        <position name="fsc_silicone_gap_pv0x5584e95e0630_pos" unit="mm" x="0" y="0" z="-31.0125"/>
+      </physvol>
+      <physvol name="fsc_crystal_pv0x5584e95e0a10">
+        <volumeref ref="fsc_crystal0x5584e95e08a0"/>
+        <position name="fsc_crystal_pv0x5584e95e0a10_pos" unit="mm" x="0" y="0" z="2.9875"/>
+      </physvol>
+      <physvol name="fsc_air_gap_pv0x5584e95e0d60">
+        <volumeref ref="fsc_air_gap0x5584e95e0bf0"/>
+        <position name="fsc_air_gap_pv0x5584e95e0d60_pos" unit="mm" x="0" y="0" z="36.5875"/>
+      </physvol>
+    </volume>
+    <volume name="fsc_matrix_air_gap0x5584e95e0f50">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="fsc_matrix_air_gap_box0x5584e95e0e70"/>
+      <physvol name="fsc_matrix_air_gap_pv0x5584e95e10e0">
+        <volumeref ref="front_single_crystal0x5584e95d5300"/>
+      </physvol>
+    </volume>
+    <volume name="fsc_matrix_structure0x5584e95e13f0">
+      <materialref ref="carbon_fiber_material0x5584e95d4060"/>
+      <solidref ref="fsc_matrix_structure_box0x5584e95e1260"/>
+      <physvol name="fsc_matrix_structure_pv0x5584e95e15a0">
+        <volumeref ref="fsc_matrix_air_gap0x5584e95e0f50"/>
+      </physvol>
+    </volume>
+    <volume name="fsc_matrix_tower0x5584e95e1850">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="fsc_matrix_tower_box0x5584e95e16f0"/>
+      <physvol name="fsc_matrix_tower_pv0x5584e95e19e0">
+        <volumeref ref="fsc_matrix_structure0x5584e95e13f0"/>
+      </physvol>
+    </volume>
+    <volume name="fsc_matrix0x5584e95e1c40">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="fsc_matrix_box0x5584e95e1b60"/>
+      <physvol name="fsc_matrix_pv0x5584e95e1db0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e1db0_pos" unit="mm" x="-54.75" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="11" name="fsc_matrix_pv0x5584e95e1eb0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e1eb0_pos" unit="mm" x="-54.75" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="22" name="fsc_matrix_pv0x5584e95e1f60">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e1f60_pos" unit="mm" x="-54.75" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="33" name="fsc_matrix_pv0x5584e95e2050">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2050_pos" unit="mm" x="-54.75" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="44" name="fsc_matrix_pv0x5584e95e20e0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e20e0_pos" unit="mm" x="-54.75" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="55" name="fsc_matrix_pv0x5584e95e2170">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2170_pos" unit="mm" x="-54.75" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="66" name="fsc_matrix_pv0x5584e95e21d0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e21d0_pos" unit="mm" x="-54.75" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="77" name="fsc_matrix_pv0x5584e95e2230">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2230_pos" unit="mm" x="-54.75" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="88" name="fsc_matrix_pv0x5584e95e22c0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e22c0_pos" unit="mm" x="-54.75" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="99" name="fsc_matrix_pv0x5584e95e2470">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2470_pos" unit="mm" x="-54.75" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="110" name="fsc_matrix_pv0x5584e95e2500">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2500_pos" unit="mm" x="-54.75" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="1" name="fsc_matrix_pv0x5584e95e2590">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2590_pos" unit="mm" x="-43.8" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="12" name="fsc_matrix_pv0x5584e95e2620">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2620_pos" unit="mm" x="-43.8" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="23" name="fsc_matrix_pv0x5584e95e26b0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e26b0_pos" unit="mm" x="-43.8" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="34" name="fsc_matrix_pv0x5584e95e2740">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2740_pos" unit="mm" x="-43.8" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="45" name="fsc_matrix_pv0x5584e95e27d0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e27d0_pos" unit="mm" x="-43.8" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="56" name="fsc_matrix_pv0x5584e95e2860">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2860_pos" unit="mm" x="-43.8" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="67" name="fsc_matrix_pv0x5584e95e2a00">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2a00_pos" unit="mm" x="-43.8" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="78" name="fsc_matrix_pv0x5584e95e2a90">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2a90_pos" unit="mm" x="-43.8" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="89" name="fsc_matrix_pv0x5584e95e2b20">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2b20_pos" unit="mm" x="-43.8" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="100" name="fsc_matrix_pv0x5584e95e2bb0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2bb0_pos" unit="mm" x="-43.8" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="111" name="fsc_matrix_pv0x5584e95e2c40">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2c40_pos" unit="mm" x="-43.8" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="2" name="fsc_matrix_pv0x5584e95e2cd0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2cd0_pos" unit="mm" x="-32.85" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="13" name="fsc_matrix_pv0x5584e95e2d60">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2d60_pos" unit="mm" x="-32.85" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="24" name="fsc_matrix_pv0x5584e95e2df0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2df0_pos" unit="mm" x="-32.85" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="35" name="fsc_matrix_pv0x5584e95e2e80">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2e80_pos" unit="mm" x="-32.85" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="46" name="fsc_matrix_pv0x5584e95e2f10">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2f10_pos" unit="mm" x="-32.85" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="57" name="fsc_matrix_pv0x5584e95e2fa0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e2fa0_pos" unit="mm" x="-32.85" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="68" name="fsc_matrix_pv0x5584e95e3030">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3030_pos" unit="mm" x="-32.85" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="79" name="fsc_matrix_pv0x5584e95e30c0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e30c0_pos" unit="mm" x="-32.85" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="90" name="fsc_matrix_pv0x5584e95e3150">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3150_pos" unit="mm" x="-32.85" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="101" name="fsc_matrix_pv0x5584e95e31e0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e31e0_pos" unit="mm" x="-32.85" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="112" name="fsc_matrix_pv0x5584e95e3270">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3270_pos" unit="mm" x="-32.85" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="3" name="fsc_matrix_pv0x5584e95e3300">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3300_pos" unit="mm" x="-21.9" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="14" name="fsc_matrix_pv0x5584e95e3390">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3390_pos" unit="mm" x="-21.9" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="25" name="fsc_matrix_pv0x5584e95e3420">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3420_pos" unit="mm" x="-21.9" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="36" name="fsc_matrix_pv0x5584e95e34b0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e34b0_pos" unit="mm" x="-21.9" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="47" name="fsc_matrix_pv0x5584e95e3540">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3540_pos" unit="mm" x="-21.9" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="58" name="fsc_matrix_pv0x5584e95e35d0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e35d0_pos" unit="mm" x="-21.9" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="69" name="fsc_matrix_pv0x5584e95e3660">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3660_pos" unit="mm" x="-21.9" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="80" name="fsc_matrix_pv0x5584e95e36f0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e36f0_pos" unit="mm" x="-21.9" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="91" name="fsc_matrix_pv0x5584e95e3780">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3780_pos" unit="mm" x="-21.9" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="102" name="fsc_matrix_pv0x5584e95e3810">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3810_pos" unit="mm" x="-21.9" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="113" name="fsc_matrix_pv0x5584e95e38a0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e38a0_pos" unit="mm" x="-21.9" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="4" name="fsc_matrix_pv0x5584e95e3930">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3930_pos" unit="mm" x="-10.95" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="15" name="fsc_matrix_pv0x5584e95e39c0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e39c0_pos" unit="mm" x="-10.95" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="26" name="fsc_matrix_pv0x5584e95e3a50">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3a50_pos" unit="mm" x="-10.95" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="37" name="fsc_matrix_pv0x5584e95e3ae0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3ae0_pos" unit="mm" x="-10.95" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="48" name="fsc_matrix_pv0x5584e95e3b70">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3b70_pos" unit="mm" x="-10.95" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="59" name="fsc_matrix_pv0x5584e95e3c00">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3c00_pos" unit="mm" x="-10.95" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="70" name="fsc_matrix_pv0x5584e95e3c90">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3c90_pos" unit="mm" x="-10.95" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="81" name="fsc_matrix_pv0x5584e95e3d20">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3d20_pos" unit="mm" x="-10.95" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="92" name="fsc_matrix_pv0x5584e95e3db0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3db0_pos" unit="mm" x="-10.95" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="103" name="fsc_matrix_pv0x5584e95e3e40">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3e40_pos" unit="mm" x="-10.95" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="114" name="fsc_matrix_pv0x5584e95e3ed0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3ed0_pos" unit="mm" x="-10.95" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="5" name="fsc_matrix_pv0x5584e95e3f60">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3f60_pos" unit="mm" x="0" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="16" name="fsc_matrix_pv0x5584e95e3ff0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e3ff0_pos" unit="mm" x="0" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="27" name="fsc_matrix_pv0x5584e95e4080">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4080_pos" unit="mm" x="0" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="38" name="fsc_matrix_pv0x5584e95e4110">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4110_pos" unit="mm" x="0" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="49" name="fsc_matrix_pv0x5584e95e41a0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e41a0_pos" unit="mm" x="0" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="60" name="fsc_matrix_pv0x5584e95e4230">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+      </physvol>
+      <physvol copynumber="71" name="fsc_matrix_pv0x5584e95e42c0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e42c0_pos" unit="mm" x="0" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="82" name="fsc_matrix_pv0x5584e95e4350">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4350_pos" unit="mm" x="0" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="93" name="fsc_matrix_pv0x5584e95e43e0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e43e0_pos" unit="mm" x="0" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="104" name="fsc_matrix_pv0x5584e95e4470">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4470_pos" unit="mm" x="0" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="115" name="fsc_matrix_pv0x5584e95e4500">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4500_pos" unit="mm" x="0" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="6" name="fsc_matrix_pv0x5584e95e4590">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4590_pos" unit="mm" x="10.95" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="17" name="fsc_matrix_pv0x5584e95e4620">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4620_pos" unit="mm" x="10.95" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="28" name="fsc_matrix_pv0x5584e95e46b0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e46b0_pos" unit="mm" x="10.95" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="39" name="fsc_matrix_pv0x5584e95e4740">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4740_pos" unit="mm" x="10.95" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="50" name="fsc_matrix_pv0x5584e95e47d0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e47d0_pos" unit="mm" x="10.95" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="61" name="fsc_matrix_pv0x5584e95e4860">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4860_pos" unit="mm" x="10.95" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="72" name="fsc_matrix_pv0x5584e95e48f0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e48f0_pos" unit="mm" x="10.95" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="83" name="fsc_matrix_pv0x5584e95e4980">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4980_pos" unit="mm" x="10.95" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="94" name="fsc_matrix_pv0x5584e95e4a10">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4a10_pos" unit="mm" x="10.95" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="105" name="fsc_matrix_pv0x5584e95e4aa0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4aa0_pos" unit="mm" x="10.95" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="116" name="fsc_matrix_pv0x5584e95e4b30">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4b30_pos" unit="mm" x="10.95" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="7" name="fsc_matrix_pv0x5584e95e4bc0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4bc0_pos" unit="mm" x="21.9" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="18" name="fsc_matrix_pv0x5584e95e4c50">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4c50_pos" unit="mm" x="21.9" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="29" name="fsc_matrix_pv0x5584e95e4ce0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4ce0_pos" unit="mm" x="21.9" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="40" name="fsc_matrix_pv0x5584e95e4d70">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4d70_pos" unit="mm" x="21.9" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="51" name="fsc_matrix_pv0x5584e95e4e00">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4e00_pos" unit="mm" x="21.9" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="62" name="fsc_matrix_pv0x5584e95e4e90">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4e90_pos" unit="mm" x="21.9" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="73" name="fsc_matrix_pv0x5584e95e4f20">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4f20_pos" unit="mm" x="21.9" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="84" name="fsc_matrix_pv0x5584e95e4fb0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e4fb0_pos" unit="mm" x="21.9" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="95" name="fsc_matrix_pv0x5584e95e5040">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5040_pos" unit="mm" x="21.9" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="106" name="fsc_matrix_pv0x5584e95e50d0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e50d0_pos" unit="mm" x="21.9" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="117" name="fsc_matrix_pv0x5584e95e5160">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5160_pos" unit="mm" x="21.9" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="8" name="fsc_matrix_pv0x5584e95e51f0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e51f0_pos" unit="mm" x="32.85" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="19" name="fsc_matrix_pv0x5584e95e5280">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5280_pos" unit="mm" x="32.85" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="30" name="fsc_matrix_pv0x5584e95e5310">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5310_pos" unit="mm" x="32.85" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="41" name="fsc_matrix_pv0x5584e95e53a0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e53a0_pos" unit="mm" x="32.85" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="52" name="fsc_matrix_pv0x5584e95e5430">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5430_pos" unit="mm" x="32.85" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="63" name="fsc_matrix_pv0x5584e95e5b10">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5b10_pos" unit="mm" x="32.85" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="74" name="fsc_matrix_pv0x5584e95e5ba0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5ba0_pos" unit="mm" x="32.85" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="85" name="fsc_matrix_pv0x5584e95e5c30">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5c30_pos" unit="mm" x="32.85" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="96" name="fsc_matrix_pv0x5584e95e5cc0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5cc0_pos" unit="mm" x="32.85" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="107" name="fsc_matrix_pv0x5584e95e5d50">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5d50_pos" unit="mm" x="32.85" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="118" name="fsc_matrix_pv0x5584e95e5de0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5de0_pos" unit="mm" x="32.85" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="9" name="fsc_matrix_pv0x5584e95e5e70">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5e70_pos" unit="mm" x="43.8" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="20" name="fsc_matrix_pv0x5584e95e5f00">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5f00_pos" unit="mm" x="43.8" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="31" name="fsc_matrix_pv0x5584e95e5f90">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e5f90_pos" unit="mm" x="43.8" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="42" name="fsc_matrix_pv0x5584e95e6020">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6020_pos" unit="mm" x="43.8" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="53" name="fsc_matrix_pv0x5584e95e60b0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e60b0_pos" unit="mm" x="43.8" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="64" name="fsc_matrix_pv0x5584e95e6140">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6140_pos" unit="mm" x="43.8" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="75" name="fsc_matrix_pv0x5584e95e61d0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e61d0_pos" unit="mm" x="43.8" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="86" name="fsc_matrix_pv0x5584e95e6260">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6260_pos" unit="mm" x="43.8" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="97" name="fsc_matrix_pv0x5584e95e62f0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e62f0_pos" unit="mm" x="43.8" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="108" name="fsc_matrix_pv0x5584e95e6380">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6380_pos" unit="mm" x="43.8" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="119" name="fsc_matrix_pv0x5584e95e6410">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6410_pos" unit="mm" x="43.8" y="54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="10" name="fsc_matrix_pv0x5584e95e64a0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e64a0_pos" unit="mm" x="54.75" y="-54.75" z="0"/>
+      </physvol>
+      <physvol copynumber="21" name="fsc_matrix_pv0x5584e95e6530">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6530_pos" unit="mm" x="54.75" y="-43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="32" name="fsc_matrix_pv0x5584e95e65c0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e65c0_pos" unit="mm" x="54.75" y="-32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="43" name="fsc_matrix_pv0x5584e95e6650">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6650_pos" unit="mm" x="54.75" y="-21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="54" name="fsc_matrix_pv0x5584e95e66e0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e66e0_pos" unit="mm" x="54.75" y="-10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="65" name="fsc_matrix_pv0x5584e95e6770">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6770_pos" unit="mm" x="54.75" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="76" name="fsc_matrix_pv0x5584e95e6800">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6800_pos" unit="mm" x="54.75" y="10.95" z="0"/>
+      </physvol>
+      <physvol copynumber="87" name="fsc_matrix_pv0x5584e95e6890">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6890_pos" unit="mm" x="54.75" y="21.9" z="0"/>
+      </physvol>
+      <physvol copynumber="98" name="fsc_matrix_pv0x5584e95e6920">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6920_pos" unit="mm" x="54.75" y="32.85" z="0"/>
+      </physvol>
+      <physvol copynumber="109" name="fsc_matrix_pv0x5584e95e69b0">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e69b0_pos" unit="mm" x="54.75" y="43.8" z="0"/>
+      </physvol>
+      <physvol copynumber="120" name="fsc_matrix_pv0x5584e95e6a40">
+        <volumeref ref="fsc_matrix_tower0x5584e95e1850"/>
+        <position name="fsc_matrix_pv0x5584e95e6a40_pos" unit="mm" x="54.75" y="54.75" z="0"/>
+      </physvol>
+    </volume>
+    <volume name="rsc_crystal0x5584e95e6f10">
+      <materialref ref="crystal_material0x5584e95cd620"/>
+      <solidref ref="rsc_crystal_box0x5584e95e6e30"/>
+    </volume>
+    <volume name="rsc_silicone_gap0x5584e95e7340">
+      <materialref ref="silicone_gap_material0x5584e95c9f60"/>
+      <solidref ref="rsc_silicone_gap_box0x5584e95e71b0"/>
+    </volume>
+    <volume name="rsc_resin_window0x5584e95e7790">
+      <materialref ref="resin_window_material0x5584e95c69e0"/>
+      <solidref ref="rsc_resin_window_box0x5584e95e7650"/>
+    </volume>
+    <volume name="rsc_detector0x5584e95e7bf0">
+      <materialref ref="photocathode_material0x5584e95c3ae0"/>
+      <solidref ref="rsc_detector_box0x5584e95e7ab0"/>
+      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
+    </volume>
+    <volume name="rsc_air_gap0x5584e95e7f20">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="rsc_air_gap_box0x5584e95e7e20"/>
+    </volume>
+    <volume name="rear_single_crystal0x5584e95e6ca0">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="rear_single_crystal_box0x5584e95e6b10"/>
+      <physvol name="rsc_crystal_pv0x5584e95e7080">
+        <volumeref ref="rsc_crystal0x5584e95e6f10"/>
+        <position name="rsc_crystal_pv0x5584e95e7080_pos" unit="mm" x="0" y="0" z="-3.1875"/>
+      </physvol>
+      <physvol name="rsc_silicone_gap_pv0x5584e95e74d0">
+        <volumeref ref="rsc_silicone_gap0x5584e95e7340"/>
+        <position name="rsc_silicone_gap_pv0x5584e95e74d0_pos" unit="mm" x="0" y="0" z="77.3125"/>
+      </physvol>
+      <physvol name="rsc_resin_window_pv0x5584e95e7920">
+        <volumeref ref="rsc_resin_window0x5584e95e7790"/>
+        <position name="rsc_resin_window_pv0x5584e95e7920_pos" unit="mm" x="0" y="0" z="77.9"/>
+      </physvol>
+      <physvol name="rsc_detector_pv0x5584e95e7d40">
+        <volumeref ref="rsc_detector0x5584e95e7bf0"/>
+        <position name="rsc_detector_pv0x5584e95e7d40_pos" unit="mm" x="0" y="0" z="80.4875"/>
+      </physvol>
+      <physvol name="rsc_air_gap_pv0x5584e95e8090">
+        <volumeref ref="rsc_air_gap0x5584e95e7f20"/>
+        <position name="rsc_air_gap_pv0x5584e95e8090_pos" unit="mm" x="0" y="0" z="83.0875"/>
+      </physvol>
+    </volume>
+    <volume name="rsc_matrix_air_gap0x5584e95e8280">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="rsc_matrix_air_gap_box0x5584e95e81a0"/>
+      <physvol name="rsc_matrix_air_gap_pv0x5584e95e8410">
+        <volumeref ref="rear_single_crystal0x5584e95e6ca0"/>
+      </physvol>
+    </volume>
+    <volume name="rsc_matrix_structure0x5584e95e8720">
+      <materialref ref="carbon_fiber_material0x5584e95d4060"/>
+      <solidref ref="rsc_matrix_structure_box0x5584e95e8590"/>
+      <physvol name="rsc_matrix_structure_pv0x5584e95e88d0">
+        <volumeref ref="rsc_matrix_air_gap0x5584e95e8280"/>
+      </physvol>
+    </volume>
+    <volume name="rsc_matrix_tower0x5584e95e8b80">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="rsc_matrix_tower_box0x5584e95e8a20"/>
+      <physvol name="rsc_matrix_tower_pv0x5584e95e8d10">
+        <volumeref ref="rsc_matrix_structure0x5584e95e8720"/>
+      </physvol>
+    </volume>
+    <volume name="rsc_matrix0x5584e95e8f70">
+      <materialref ref="air_gap_material0x5584e95d1520"/>
+      <solidref ref="rsc_matrix_box0x5584e95e8e90"/>
+      <physvol name="rsc_matrix_pv0x5584e95e90e0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e90e0_pos" unit="mm" x="-44.4" y="-44.4" z="0"/>
+      </physvol>
+      <physvol copynumber="5" name="rsc_matrix_pv0x5584e95e91e0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e91e0_pos" unit="mm" x="-44.4" y="-22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="10" name="rsc_matrix_pv0x5584e95e9290">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9290_pos" unit="mm" x="-44.4" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="15" name="rsc_matrix_pv0x5584e95e9380">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9380_pos" unit="mm" x="-44.4" y="22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="20" name="rsc_matrix_pv0x5584e95e9410">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9410_pos" unit="mm" x="-44.4" y="44.4" z="0"/>
+      </physvol>
+      <physvol copynumber="1" name="rsc_matrix_pv0x5584e95e94f0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e94f0_pos" unit="mm" x="-22.2" y="-44.4" z="0"/>
+      </physvol>
+      <physvol copynumber="6" name="rsc_matrix_pv0x5584e95e9550">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9550_pos" unit="mm" x="-22.2" y="-22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="11" name="rsc_matrix_pv0x5584e95e95b0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e95b0_pos" unit="mm" x="-22.2" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="16" name="rsc_matrix_pv0x5584e95e9640">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9640_pos" unit="mm" x="-22.2" y="22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="21" name="rsc_matrix_pv0x5584e95e96d0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e96d0_pos" unit="mm" x="-22.2" y="44.4" z="0"/>
+      </physvol>
+      <physvol copynumber="2" name="rsc_matrix_pv0x5584e95e9760">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9760_pos" unit="mm" x="0" y="-44.4" z="0"/>
+      </physvol>
+      <physvol copynumber="7" name="rsc_matrix_pv0x5584e95e97f0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e97f0_pos" unit="mm" x="0" y="-22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="12" name="rsc_matrix_pv0x5584e95e9880">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+      </physvol>
+      <physvol copynumber="17" name="rsc_matrix_pv0x5584e95e9910">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9910_pos" unit="mm" x="0" y="22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="22" name="rsc_matrix_pv0x5584e95e99a0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e99a0_pos" unit="mm" x="0" y="44.4" z="0"/>
+      </physvol>
+      <physvol copynumber="3" name="rsc_matrix_pv0x5584e95e9a30">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9a30_pos" unit="mm" x="22.2" y="-44.4" z="0"/>
+      </physvol>
+      <physvol copynumber="8" name="rsc_matrix_pv0x5584e95e9ac0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9ac0_pos" unit="mm" x="22.2" y="-22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="13" name="rsc_matrix_pv0x5584e95e9b50">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9b50_pos" unit="mm" x="22.2" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="18" name="rsc_matrix_pv0x5584e95e9be0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9be0_pos" unit="mm" x="22.2" y="22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="23" name="rsc_matrix_pv0x5584e95e9c70">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9c70_pos" unit="mm" x="22.2" y="44.4" z="0"/>
+      </physvol>
+      <physvol copynumber="4" name="rsc_matrix_pv0x5584e95e9d00">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9d00_pos" unit="mm" x="44.4" y="-44.4" z="0"/>
+      </physvol>
+      <physvol copynumber="9" name="rsc_matrix_pv0x5584e95e9d90">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9d90_pos" unit="mm" x="44.4" y="-22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="14" name="rsc_matrix_pv0x5584e95e9e20">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9e20_pos" unit="mm" x="44.4" y="0" z="0"/>
+      </physvol>
+      <physvol copynumber="19" name="rsc_matrix_pv0x5584e95e9eb0">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9eb0_pos" unit="mm" x="44.4" y="22.2" z="0"/>
+      </physvol>
+      <physvol copynumber="24" name="rsc_matrix_pv0x5584e95e9f40">
+        <volumeref ref="rsc_matrix_tower0x5584e95e8b80"/>
+        <position name="rsc_matrix_pv0x5584e95e9f40_pos" unit="mm" x="44.4" y="44.4" z="0"/>
+      </physvol>
+    </volume>
+    <volume name="world0x5584e95ea290">
+      <materialref ref="vacuum0x5584e9596be0"/>
+      <solidref ref="world_box0x5584e95ea1b0"/>
+      <physvol name="fsc_matrix_pv0x5584e95ea400">
+        <volumeref ref="fsc_matrix0x5584e95e1c40"/>
+        <position name="fsc_matrix_pv0x5584e95ea400_pos" unit="mm" x="0" y="0" z="-83.1975"/>
+      </physvol>
+      <physvol name="rsc_matrix_pv0x5584e95ea4b0">
+        <volumeref ref="rsc_matrix0x5584e95e8f70"/>
+        <position name="rsc_matrix_pv0x5584e95ea4b0_pos" unit="mm" x="0" y="0" z="36.6975"/>
+      </physvol>
+    </volume>
+    <skinsurface name="fsc_detector_surface0x5584e95ea090" surfaceproperty="detector_surface0x5584e95b3f10">
+      <volumeref ref="fsc_detector0x5584e95db930"/>
+    </skinsurface>
+    <skinsurface name="fsc_surface0x5584e95e94a0" surfaceproperty="reflective_wrapping0x5584e95d4c20">
+      <volumeref ref="front_single_crystal0x5584e95d5300"/>
+    </skinsurface>
+    <skinsurface name="rsc_detector_surface0x5584e95ea120" surfaceproperty="detector_surface0x5584e95b3f10">
+      <volumeref ref="rsc_detector0x5584e95e7bf0"/>
+    </skinsurface>
+    <skinsurface name="rsc_surface0x5584e95c2d00" surfaceproperty="reflective_wrapping0x5584e95d4c20">
+      <volumeref ref="rear_single_crystal0x5584e95e6ca0"/>
+    </skinsurface>
+  </structure>
+
+  <setup name="Default" version="1.0">
+    <world ref="world0x5584e95ea290"/>
+  </setup>
+
+</gdml>

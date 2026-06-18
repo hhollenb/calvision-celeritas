@@ -1,0 +1,8 @@
+{
+    "num_events": 1000,
+    "num_threads": 8,
+    "pdg_id": 11,
+    "energy": 10,
+    "geometry_filename": "../../../data/dual_readout_with_leakage.gdml",
+    "output_filename": "edep_result.root"
+}

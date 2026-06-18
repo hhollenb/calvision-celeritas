@@ -63,8 +63,18 @@ set(_src_app
     app/celer_offload/EventAction.cc
     app/celer_offload/GeneratorOffload.cc
     app/celer_offload/Config.cc
+    app/celer_offload/LeakageSensitiveDetector.cc
 )
 
 add_executable(g4_mt_app app/celer_offload/main.cc ${_src_app})
 target_include_directories(g4_mt_app PRIVATE ${_includes})
 cuda_rdc_target_link_libraries(g4_mt_app ${_libs})
+
+
+set(_src_shower_measurement
+    app/shower_measurement/EdepSensitiveDetector.cc
+)
+
+add_executable(shower_measurement app/shower_measurement/edep_measurement.cc ${_src_shower_measurement})
+target_include_directories(shower_measurement PRIVATE ${_includes})
+cuda_rdc_target_link_libraries(shower_measurement ${_libs})

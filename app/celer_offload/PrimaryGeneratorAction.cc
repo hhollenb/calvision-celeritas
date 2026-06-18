@@ -12,7 +12,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(inp::Primary const& primary)
     particle_gun_ = std::make_shared<G4ParticleGun>(1);
 
     particle_gun_->SetParticleDefinition(G4ParticleTable::GetParticleTable()->FindParticle(primary.pdg));
-    particle_gun_->SetParticlePosition(primary_.position * cm);
+    particle_gun_->SetParticlePosition(primary_.position);
     particle_gun_->SetParticleMomentumDirection(primary_.direction.unit());
 }
 
@@ -23,5 +23,5 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)
 
 void PrimaryGeneratorAction::set_energy(double energy)
 {
-    particle_gun_->SetParticleEnergy(energy * GeV);
+    particle_gun_->SetParticleEnergy(energy);
 }

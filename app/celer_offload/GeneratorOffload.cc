@@ -163,33 +163,6 @@ G4VParticleChange* ScintillationOffload::PostStepDoIt(G4Track const& track, G4St
 
     auto* result = G4Scintillation::PostStepDoIt(track, step);
 
-    if (this->GetNumPhotons() > 0)
-    {
-        static double total_photons = 0;
-        static double total_edep = 0;
-
-        G4Material const* material = track.GetMaterial();
-        G4MaterialPropertiesTable* MPT = material->GetMaterialPropertiesTable();
-        if (MPT)
-        {
-            double mean_num_photons = MPT->GetConstProperty(kSCINTILLATIONYIELD);
-            double visible_energy_deposit = this->GetSaturation()->VisibleEnergyDepositionAtAStep(&step);
-            double total_energy_deposit = step.GetTotalEnergyDeposit();
-
-            total_photons += this->GetNumPhotons();
-            total_edep += total_energy_deposit;
-
-            G4cout << "MeanNumPhotons = " << (mean_num_photons * keV) << " keV^-1" << G4endl
-                   << "\tVisible energy deposit: " << (visible_energy_deposit / keV) << " keV" << G4endl
-                   << "\tTotal   energy deposit: " << (total_energy_deposit / keV) << " keV" << G4endl
-                   << "\tBirks Law Photons: " << (visible_energy_deposit * mean_num_photons) << G4endl
-                   << "\tNaive Law Photons: " << (total_energy_deposit * mean_num_photons) << G4endl
-                   << "\tActual    Photons: " << this->GetNumPhotons() << G4endl
-                   << "\tTotal     Photons: " << total_photons << G4endl
-                   << "\tTotal     Edep: " << (total_edep / MeV) << " MeV" << G4endl;
-        }
-    }
-
     if (this->track_celer() && tracking_vol && this->GetNumPhotons() > 0)
     {
         this->offload(track, step, this->GetNumPhotons());

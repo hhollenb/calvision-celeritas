@@ -3,6 +3,7 @@
 #include <G4SDManager.hh>
 
 #include "OpticalSensitiveDetector.hh"
+#include "LeakageSensitiveDetector.hh"
 
 DetectorConstruction::DetectorConstruction(inp::Config const& config, OpticalHitRecorder* hit_recorder)
     : config_(config)
@@ -34,13 +35,24 @@ void DetectorConstruction::ConstructSDandField()
                 continue;
             }
 
-            // Add sensitive detector
             std::string sd_name = log_vol->GetName();
-            G4VSensitiveDetector* this_sd = new SignalSensitiveDetector(sd_name, hit_recorder_, config_);
+            G4VSensitiveDetector* this_sd = nullptr;
+
+            if (element.value == "ShowerLeakageDetector")
+            {
+                this_sd = new ShowerLeakageDetector(sd_name);
+            }
+            else if (element.value == "PhotonDetector")
+            {
+                this_sd = new SignalSensitiveDetector(sd_name, hit_recorder_, config_);
+            }
+            
+
+            // Add sensitive detector
             sd_manager->AddNewDetector(this_sd);
             G4VUserDetectorConstruction::SetSensitiveDetector(log_vol->GetName(), this_sd);
 
-            G4cout << "Constructed sensitive detector " << sd_name << " associated with logical volume " << log_vol->GetName() << G4endl;
+            G4cout << "Constructed " << element.value << " sensitive detector " << sd_name << " associated with logical volume " << log_vol->GetName() << G4endl;
         }
     }
 }

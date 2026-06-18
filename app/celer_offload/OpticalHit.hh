@@ -23,7 +23,8 @@ struct ProcessHistograms
 {
     TH1D* energy;
     TH1D* time;
-    TProfile* signal;
+    TH1D* signal;
+    TH1D* prompt_signal;
 
     ProcessHistograms(celeritas::GeneratorType gen_type, std::string const& det_name, std::string const& collection_name);
     void fill(OpticalHit const& hit);

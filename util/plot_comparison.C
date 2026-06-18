@@ -7,96 +7,235 @@
 #include <string>
 #include <memory>
 
-void make_event_comparisons(std::string const& run_name, std::string const& event_name, TDirectory* event_dir)
+
+int const g4_marker = 20;
+auto const scintillation_color = kRed;
+auto const cherenkov_color = kGreen;
+
+
+
+
+void normalize(TH1* hist)
 {
-    std::vector<std::string> detector_names{"detector", "fsc_detector"};
-    std::vector<std::string> gen_types{"cherenkov", "scintillation"};
-    std::vector<std::string> hist_names{"energy", "time", "signal"};
-
-    std::string file_prefix = "comparison-" + run_name + "-" + event_name;
-
-    for (auto const& detector_name : detector_names)
+    double integral = hist->Integral();
+    if (integral != 0)
     {
-        for (auto const& gen_type : gen_types)
+        hist->Scale(1.0 / integral);
+    }
+}
+
+
+
+TH1* get_total_hist(TDirectory* event_dir, std::string const& postfix)
+{
+    std::vector<std::string> detector_names{"rsc_detector", "fsc_detector"};
+
+    TH1* result = nullptr;
+    for (auto const& det_name : detector_names)
+    {
+        TH1* hist = event_dir->Get<TH1>((det_name + "_" + postfix).c_str());
+
+        if (!result)
         {
-            for (auto const& hist_name : hist_names)
-            {
-                std::unique_ptr<TCanvas> canvas = std::make_unique<TCanvas>("canvas", "canvas", 800, 800);
+            result = hist;
+        }
+        else
+        {
+            result->Add(hist);
+        }
+    }
 
-                TH1* g4_hist = event_dir->Get<TH1>((detector_name + "_Geant4_" + gen_type + "_" + hist_name).c_str());
-                TH1* cel_hist = event_dir->Get<TH1>((detector_name + "_Celeritas_" + gen_type + "_" + hist_name).c_str());
+    return result;
+}
 
-                TRatioPlot* ratio_hist = new TRatioPlot(g4_hist, cel_hist);
-                ratio_hist->Draw();
-
-                canvas->Draw();
-                canvas->SaveAs((file_prefix + "-" + detector_name + "-" + gen_type + "-" + hist_name + ".pdf").c_str());
-            }
+void load_event_hists(std::map<std::string, TH1*>& histograms, TDirectory* event_dir)
+{
+    for (auto& [name, hist] : histograms)
+    {
+        auto* result = get_total_hist(event_dir, name);
+        if (hist)
+        {
+            hist->Add(result);
+        }
+        else
+        {
+            hist = result;
         }
     }
 }
 
 
+void plot_energy(std::map<std::string, TH1*>& histograms)
+{
+    TH1* cherenkov_geant_energy = histograms.at("Geant4_cherenkov_energy");
+    TH1* scintillation_geant_energy = histograms.at("Geant4_scintillation_energy");
+    TH1* cherenkov_celeritas_energy = histograms.at("Celeritas_cherenkov_energy");
+    TH1* scintillation_celeritas_energy = histograms.at("Celeritas_scintillation_energy");
+
+    normalize(cherenkov_geant_energy);
+    normalize(scintillation_geant_energy);
+    normalize(cherenkov_celeritas_energy);
+    normalize(scintillation_celeritas_energy);
+
+    auto canvas = std::make_unique<TCanvas>("canvas", "canvas", 800, 800);
+    auto legend = std::make_unique<TLegend>(0.6, 0.7, 0.9, 0.9);
+
+    scintillation_celeritas_energy->SetTitle("Measured Wavelength Spectrum;Wavelength [nm];Arb. Units");
+
+    scintillation_geant_energy->SetMarkerStyle(g4_marker);
+    scintillation_geant_energy->SetMarkerColor(scintillation_color);
+    scintillation_geant_energy->SetStats(false);
+
+    cherenkov_geant_energy->SetMarkerStyle(g4_marker);
+    cherenkov_geant_energy->SetMarkerColor(cherenkov_color);
+    cherenkov_geant_energy->SetStats(false);
+
+    cherenkov_celeritas_energy->SetLineColor(cherenkov_color);
+    cherenkov_celeritas_energy->SetStats(false);
+
+    scintillation_celeritas_energy->SetLineColor(scintillation_color);
+    scintillation_celeritas_energy->SetStats(false);
+
+
+    scintillation_celeritas_energy->Draw("HIST");
+    cherenkov_celeritas_energy->Draw("HIST SAME");
+    scintillation_geant_energy->Draw("P SAME");
+    cherenkov_geant_energy->Draw("P SAME");
+
+    legend->AddEntry(scintillation_geant_energy, "Geant4 Scintillation");
+    legend->AddEntry(cherenkov_geant_energy, "Geant4 Cherenkov");
+    legend->AddEntry(scintillation_celeritas_energy, "Celeritas Scintillation");
+    legend->AddEntry(cherenkov_celeritas_energy, "Celeritas Cherenkov");
+    legend->Draw();
+
+    canvas->Draw();
+    canvas->SaveAs("comparison-energy.png");
+}
+
+void plot_signal(std::map<std::string, TH1*>& histogram)
+{
+    TH1* cherenkov_geant_signal = histogram.at("Geant4_cherenkov_signal");
+    TH1* scintillation_geant_signal = histogram.at("Geant4_scintillation_signal");
+    TH1* cherenkov_celeritas_signal = histogram.at("Celeritas_cherenkov_signal");
+    TH1* scintillation_celeritas_signal = histogram.at("Celeritas_scintillation_signal");
+
+    auto canvas = std::make_unique<TCanvas>("canvas", "canvas", 800, 800);
+    auto legend = std::make_unique<TLegend>(0.6, 0.7, 0.9, 0.9);
+
+    cherenkov_celeritas_signal->SetTitle("Measured Energy/Time Signal;Time [ns];Energy [eV]");
+
+    scintillation_geant_signal->SetMarkerStyle(g4_marker);
+    scintillation_geant_signal->SetMarkerColor(scintillation_color);
+    scintillation_geant_signal->SetStats(false);
+
+    cherenkov_geant_signal->SetMarkerStyle(g4_marker);
+    cherenkov_geant_signal->SetMarkerColor(cherenkov_color);
+    cherenkov_geant_signal->SetStats(false);
+
+    scintillation_celeritas_signal->SetLineColor(scintillation_color);
+    scintillation_celeritas_signal->SetStats(false);
+
+    cherenkov_celeritas_signal->SetLineColor(cherenkov_color);
+    cherenkov_celeritas_signal->SetStats(false);
+
+    cherenkov_celeritas_signal->Draw("HIST");
+    scintillation_celeritas_signal->Draw("HIST SAME");
+    cherenkov_geant_signal->Draw("P SAME");
+    scintillation_geant_signal->Draw("P SAME");
+
+    legend->AddEntry(scintillation_geant_signal, "Geant4 Scintillation");
+    legend->AddEntry(cherenkov_geant_signal, "Geant4 Cherenkov");
+    legend->AddEntry(scintillation_celeritas_signal, "Celeritas Scintillation");
+    legend->AddEntry(cherenkov_celeritas_signal, "Celeritas Cherenkov");
+    legend->Draw();
+
+    canvas->Draw();
+    canvas->SaveAs("comparison-signal.png");
+}
+
+void plot_prompt_signal(std::map<std::string, TH1*>& histogram)
+{
+    TH1* cherenkov_geant_prompt_signal = histogram.at("Geant4_cherenkov_prompt_signal");
+    TH1* scintillation_geant_prompt_signal = histogram.at("Geant4_scintillation_prompt_signal");
+    TH1* cherenkov_celeritas_prompt_signal = histogram.at("Celeritas_cherenkov_prompt_signal");
+    TH1* scintillation_celeritas_prompt_signal = histogram.at("Celeritas_scintillation_prompt_signal");
+
+    auto canvas = std::make_unique<TCanvas>("canvas", "canvas", 800, 800);
+    auto legend = std::make_unique<TLegend>(0.6, 0.7, 0.9, 0.9);
+
+    cherenkov_celeritas_prompt_signal->SetTitle("Measured Energy/Time Signal;Time [ns];Energy [eV]");
+
+    scintillation_geant_prompt_signal->SetMarkerStyle(g4_marker);
+    scintillation_geant_prompt_signal->SetMarkerColor(scintillation_color);
+    scintillation_geant_prompt_signal->SetStats(false);
+
+    cherenkov_geant_prompt_signal->SetMarkerStyle(g4_marker);
+    cherenkov_geant_prompt_signal->SetMarkerColor(cherenkov_color);
+    cherenkov_geant_prompt_signal->SetStats(false);
+
+    scintillation_celeritas_prompt_signal->SetLineColor(scintillation_color);
+    scintillation_celeritas_prompt_signal->SetStats(false);
+
+    cherenkov_celeritas_prompt_signal->SetLineColor(cherenkov_color);
+    cherenkov_celeritas_prompt_signal->SetStats(false);
+
+    cherenkov_celeritas_prompt_signal->Draw("HIST");
+    scintillation_celeritas_prompt_signal->Draw("HIST SAME");
+    cherenkov_geant_prompt_signal->Draw("P SAME");
+    scintillation_geant_prompt_signal->Draw("P SAME");
+
+    legend->AddEntry(scintillation_geant_prompt_signal, "Geant4 Scintillation");
+    legend->AddEntry(cherenkov_geant_prompt_signal, "Geant4 Cherenkov");
+    legend->AddEntry(scintillation_celeritas_prompt_signal, "Celeritas Scintillation");
+    legend->AddEntry(cherenkov_celeritas_prompt_signal, "Celeritas Cherenkov");
+    legend->Draw();
+
+    canvas->Draw();
+    canvas->SaveAs("comparison-prompt_signal.png");
+}
+
 void plot_comparison()
 {
-    TFile* file = TFile::Open("output_pion0.root");
+    TFile* file = TFile::Open("output_electron.root");
 
     for (TObject* run_obj : *file->GetListOfKeys())
     {
         TKey* run_key = (TKey*) run_obj;
         TDirectory* run_dir = file->Get<TDirectory>(run_key->GetName());
 
+        std::map<std::string, TH1*> histograms;
+        histograms.emplace("Geant4_cherenkov_energy", nullptr);
+        histograms.emplace("Geant4_scintillation_energy", nullptr);
+        histograms.emplace("Celeritas_cherenkov_energy", nullptr);
+        histograms.emplace("Celeritas_scintillation_energy", nullptr);
+        histograms.emplace("Geant4_cherenkov_signal", nullptr);
+        histograms.emplace("Geant4_scintillation_signal", nullptr);
+        histograms.emplace("Celeritas_cherenkov_signal", nullptr);
+        histograms.emplace("Celeritas_scintillation_signal", nullptr);
+        histograms.emplace("Geant4_cherenkov_prompt_signal", nullptr);
+        histograms.emplace("Geant4_scintillation_prompt_signal", nullptr);
+        histograms.emplace("Celeritas_cherenkov_prompt_signal", nullptr);
+        histograms.emplace("Celeritas_scintillation_prompt_signal", nullptr);
+
+
+        double num_events = 0;
         for (TObject* event_obj : *run_dir->GetListOfKeys())
         {
             TKey* event_key = (TKey*) event_obj;
             if (TDirectory* event_dir = run_dir->Get<TDirectory>(event_key->GetName()))
             {
-                make_event_comparisons(run_key->GetName(), event_key->GetName(), event_dir);
+                num_events += 1;
+                load_event_hists(histograms, event_dir);
             }
         }
+
+        for (auto& [name, hist] : histograms)
+        {
+            hist->Scale(1.0 / num_events);
+        }
+
+        plot_energy(histograms);
+        plot_signal(histograms);
+        plot_prompt_signal(histograms);
     }
 }
-
-
-
-
-// void plot_comparison()
-// {
-//     unsigned int event_num = 0;
-// 
-//     TFile* g4_file = TFile::Open(("geant_output_" + std::to_string(event_num) + ".root").c_str());
-//     TFile* cel_file = TFile::Open(("celercpu_output_" + std::to_string(event_num) + ".root").c_str());
-// 
-//     for (TObject* obj : *g4_file->GetListOfKeys())
-//     {
-//         TKey* key = (TKey*) obj;
-// 
-//         std::unique_ptr<TCanvas> canvas = std::make_unique<TCanvas>("canvas", "canvas", 800, 800);
-// 
-//         TH1* g4_hist = (TH1*) g4_file->Get(key->GetName());
-//         TH1* cel_hist = (TH1*) cel_file->Get(key->GetName());
-// 
-//         if (g4_hist && cel_hist)
-//         {
-//             if (g4_hist->GetDimension() == 1)
-//             {
-//                 TRatioPlot* ratio_hist = new TRatioPlot(g4_hist, cel_hist);
-//                 ratio_hist->Draw();
-// 
-//                 canvas->Draw();
-//                 canvas->SaveAs(("comparison_" + std::to_string(event_num) + "_" + key->GetName() + ".pdf").c_str());
-//             }
-//             else
-//             {
-//                 g4_hist->Draw();
-//                 canvas->Draw();
-//                 canvas->SaveAs(("geant_" + std::to_string(event_num) + "_" + key->GetName() + ".pdf").c_str());
-//                 canvas->Clear();
-// 
-//                 cel_hist->Draw();
-//                 canvas->Draw();
-//                 canvas->SaveAs(("celercpu_" + std::to_string(event_num) + "_" + key->GetName() + ".pdf").c_str());
-//             }
-//         }
-//     }
-// }

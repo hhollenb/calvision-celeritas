@@ -9,13 +9,22 @@
 
 #include "OpticalHit.hh"
 
+struct ShowerLeakageEnergy
+{
+    double lateral{0};
+    double longitudinal{0};
+    int lateral_count{0};
+    int longitudinal_count{0};
+};
+
+
 class RunSignalWriter
 {
   public:
     RunSignalWriter(TFile* file, unsigned int run_num, double primary_energy);
     ~RunSignalWriter();
 
-    void operator()(unsigned int event_id, EventHistograms const& hists);
+    void operator()(unsigned int event_id, EventHistograms const& hists, ShowerLeakageEnergy const& leakage);
 
     void close();
 

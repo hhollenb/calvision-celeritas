@@ -11,7 +11,7 @@ RunSignalWriter::~RunSignalWriter()
     this->close();
 }
 
-void RunSignalWriter::operator()(unsigned int event_id, EventHistograms const& hists)
+void RunSignalWriter::operator()(unsigned int event_id, EventHistograms const& hists, ShowerLeakageEnergy const& leakage)
 {
     auto event_dir = std::make_unique<TDirectoryFile>(("event_" + std::to_string(event_id)).c_str(), "Event Data", "", file_.get());
     event_dir->cd();
@@ -21,6 +21,16 @@ void RunSignalWriter::operator()(unsigned int event_id, EventHistograms const& h
         h.cherenkov.write(event_dir.get());
         h.scintillation.write(event_dir.get());
     }
+
+    TParameter<double>* lateral_leakage = new TParameter<double>("lateral_leakage", leakage.lateral);
+    TParameter<double>* longitudinal_leakage = new TParameter<double>("longitudinal_leakage", leakage.longitudinal);
+    TParameter<int>* lateral_count = new TParameter<int>("lateral_count", leakage.lateral_count);
+    TParameter<int>* longitudinal_count = new TParameter<int>("longitudinal_count", leakage.longitudinal_count);
+
+    lateral_leakage->Write();
+    longitudinal_leakage->Write();
+    lateral_count->Write();
+    longitudinal_count->Write();
 
     // event_dir->Write();
     event_dir->Close();
